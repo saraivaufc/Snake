@@ -1,8 +1,18 @@
 .pragma library
 
+//DEFINES DAS DIRECOES
+
+var LEFT = "<";
+var RIGHT = ">";
+var UP = "A";
+var DONW = "V";
+
+
 var cobra = []
 var mousePositionX = 0;
 var mousePositionY = 0;
+var direcao = RIGHT;
+
 
 
 function startGame(){
@@ -35,8 +45,16 @@ function dirX(){
 
     if(mousePositionX > cobra[0].x){
         proxX++;
+        direcao = RIGHT;
     }else if(mousePositionX < cobra[0].x){
         proxX--;
+        direcao = LEFT;
+    }else if(mousePositionX === cobra[0].x){
+        if(direcao === RIGHT){
+            proxX++;
+        }else if(direcao === LEFT){
+           proxX--;
+        }
     }
     return proxX;
 }
@@ -45,12 +63,22 @@ function dirY(){
     var proxY = cobra[0].y;
     if(mousePositionY > cobra[0].y){
         proxY++;
+        direcao = DONW;
     }else if(mousePositionY < cobra[0].y){
         proxY--;
+        direcao = UP;
+    }else  if(mousePositionY === cobra[0].y){
+        if(direcao === DONW){
+            proxY++;
+        }else if(direcao === UP){
+            proxY--;
+        }
     }
     return proxY;
 }
+
 function update(index){
+    apagaNode(cobra[cobra.length-1]);
     var x = dirX();
     var y = dirY();
    // console.log(x + "@" + y);
@@ -71,6 +99,10 @@ function update(index){
     }
 }
 
+function apagaNode(node){
+    //node.destroy();
+}
+
 function mover(node, x, y){
     node.x = x;
     node.y = y;
@@ -84,6 +116,7 @@ function setPosicao(x, y){
 function paint(Campo){
     for(var i = 0 ; i < cobra.length; i++){
         cobra[i].createObject(Campo, {"x":cobra[i].x,"y":cobra[i].y});
-        console.log(cobra[i].x + " === " + cobra[i].y);
     }
+
+    console.log(cobra.length);
 }

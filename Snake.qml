@@ -2,32 +2,29 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.0
 
-import "Game.js" as Game
+import "GerenciadorCobra.js" as GCobra
+import "GerenciadorComida.js" as GComida
 
 Rectangle{
     id: campo;
     width: 500; height: 500
     visible: true
 
-
-    signal criarComida();
-
-    onCriarComida:{
-        var comida = Qt.createComponent("Comida.qml");
-        var status = comida.createObject(campo);
-        if(status === null){
-            console.log("Falha ao adicionar Comida!!");
-        }
+    Image {
+        id: background
+        anchors.fill: parent
+        source: "background.png"
+        fillMode: Image.PreserveAspectCrop
     }
 
     Timer {
         id: updateSnake;
-        interval: 1;
+        interval: 10;
         repeat: true;
         running: true;
         onTriggered: {
-            Game.update(0);
-            Game.paint(campo);
+            GCobra.update(0);
+            GCobra.paint(campo);
         }
     }
 
@@ -35,10 +32,10 @@ Rectangle{
         id:mouseAreaCampo;
         anchors.fill: parent;
         onClicked : {
-            Game.setPosicao(mouse.x, mouse.y);
+            GCobra.setPosicao(mouse.x, mouse.y);
         }
         onPressed: {
-            Game.setPosicao(mouse.x, mouse.y);
+            GCobra.setPosicao(mouse.x, mouse.y);
         }
     }
 
@@ -55,7 +52,7 @@ Rectangle{
             id: mouseAreaBotaoAdicionar
             anchors.fill: parent
             onClicked:{
-                campo.criarComida();
+                GComida.criarComida(campo);
             }
 
         }
@@ -63,7 +60,7 @@ Rectangle{
     }
 
     Component.onCompleted: {
-        Game.startGame();
+        GCobra.startGame();
     }
 
 
