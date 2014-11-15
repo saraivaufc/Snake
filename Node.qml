@@ -2,15 +2,15 @@ import QtQuick 2.0
 
 Rectangle {
     id: node
-    width: 20
-    height: 20
+    width: 10
+    height: 10
     color: "blue";
     visible: true
 
     signal updatePosition(real positionX, real positionY);
 
-    Behavior on x { PropertyAnimation { easing.type: Easing.Linear; duration:1000 } }
-    Behavior on y { PropertyAnimation { easing.type: Easing.Linear; duration:1000  } }
+    Behavior on x { PropertyAnimation { easing.type: Easing.Linear; } }
+    Behavior on y { PropertyAnimation { easing.type: Easing.Linear; } }
 
     onUpdatePosition:{
         x = positionX - (width/2)
