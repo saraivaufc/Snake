@@ -23,8 +23,7 @@ Rectangle{
         repeat: true;
         running: true;
         onTriggered: {
-            GCobra.update(0);
-            GCobra.paint(campo);
+            GCobra.update(campo);
         }
     }
 
@@ -58,9 +57,8 @@ Rectangle{
         }
 
     }
-
     Component.onCompleted: {
-        GCobra.startGame();
+        GCobra.startGame(campo);
     }
 
 

@@ -8,115 +8,91 @@ var UP = "A";
 var DONW = "V";
 
 
-var cobra = []
+var cobra = [];
 var mousePositionX = 0;
 var mousePositionY = 0;
 var direcao = RIGHT;
 
-
-
-function startGame(){
-    var novoNodo = Qt.createComponent("Node.qml");
-    novoNodo.x = mousePositionX;
-    novoNodo.y = mousePositionY;
-    cobra.push(novoNodo);
-}
-
-function adicionar(){
-    var novoNodo = Qt.createComponent("Node.qml");
-    var xUltima = cobra[cobra.length-1].x;
-    var yUltima = cobra[cobra.length-1].y;
-
-    var proxX, proxY = dir();
-    update(0,proxX, proxY);
-
-    novoNodo.x = xUltima;
-    novoNodo.y = yUltima;
-    cobra.push(novoNodo);
-}
-
-function remover(){
-    cobra.pop();
+function startGame(Campo){
+    adiciona(Campo, 0, 0);
 }
 
 
-function dirX(){
-    var proxX = cobra[0].x;
+function adiciona(Campo,xPosition , yPosition){
+    var component = Qt.createComponent("Node.qml");
+    var node = component.createObject(Campo, {"x":xPosition, "y":yPosition});
+    node.x = xPosition;
+    node.y = yPosition;
+    console.log(node.x);
+    cobra.push(node);
+}
+
+function update(Campo){
+    var xPos = cobra[0].x;
+    var yPos = cobra[0].y;
+    moveX();
+    moveY();
+    moveNodes(1,xPos, yPos);
+}
+
+function moveNodes(index , x, y){
+    if(index >= cobra.length){
+        return;
+    }
+    var m = cobra[index].x;
+    var n = cobra[index].y;
+    cobra[x] = x;
+    cobra[y] = y;
+    moveNodes(index+1, m, n);
+}
+
+
+
+
+function moveX(){
+    if(cobra.length === 0){
+        console.log("Cobra vazia!!");
+        return;
+    }
+    console.log("Cobra tamanho:" + cobra.length + " X: " + cobra[0].x);
 
     if(mousePositionX > cobra[0].x){
-        proxX++;
+        cobra[0].x++;
         direcao = RIGHT;
     }else if(mousePositionX < cobra[0].x){
-        proxX--;
+        cobra[0].x--;
         direcao = LEFT;
     }else if(mousePositionX === cobra[0].x){
         if(direcao === RIGHT){
-            proxX++;
+            cobra[0].x++;
         }else if(direcao === LEFT){
-           proxX--;
+           cobra[0].x--;
         }
     }
-    return proxX;
 }
 
-function dirY(){
-    var proxY = cobra[0].y;
+function moveY(){
+    if(cobra.length == 0){
+        console.log("Cobra vazia!!");
+        return;
+    }
+
     if(mousePositionY > cobra[0].y){
-        proxY++;
+        cobra[0].y++;
         direcao = DONW;
     }else if(mousePositionY < cobra[0].y){
-        proxY--;
+        cobra[0].y--;
         direcao = UP;
     }else  if(mousePositionY === cobra[0].y){
         if(direcao === DONW){
-            proxY++;
+            cobra[0].y++;
         }else if(direcao === UP){
-            proxY--;
+            cobra[0].y--;
         }
     }
-    return proxY;
-}
-
-function update(index){
-    apagaNode(cobra[cobra.length-1]);
-    var x = dirX();
-    var y = dirY();
-   // console.log(x + "@" + y);
-
-    var xTemp = cobra[index].x
-    var yTemp = cobra[index].y
-
-    mover(cobra[index], x, y);
-
-    for(var i = 1; i< cobra.length ; i++){
-        var xTemp2 = cobra[i].x;
-        var yTemp2 = cobra[i].y;
-
-        mover(cobra[i], xTemp, yTemp);
-        xTemp = xTemp2;
-        yTemp =  yTemp2;
-
-    }
-}
-
-function apagaNode(node){
-    //node.destroy();
-}
-
-function mover(node, x, y){
-    node.x = x;
-    node.y = y;
 }
 
 function setPosicao(x, y){
     mousePositionX = x;
     mousePositionY = y;
-}
-
-function paint(Campo){
-    for(var i = 0 ; i < cobra.length; i++){
-        cobra[i].createObject(Campo, {"x":cobra[i].x,"y":cobra[i].y});
-    }
-
-    console.log(cobra.length);
 }
