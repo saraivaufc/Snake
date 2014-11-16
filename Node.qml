@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Rectangle {
     id: node
-    width: 10
-    height: 10
+    width: 20
+    height: 20
     color: "blue";
     visible: true
     antialiasing: true
@@ -11,8 +11,8 @@ Rectangle {
 
     signal updatePosition(real positionX, real positionY);
 
-    Behavior on x { NumberAnimation{ duration:50; easing.type: Easing.OutBounce; } }
-    Behavior on y { NumberAnimation { duration:50; easing.type: Easing.OutBounce } }
+    Behavior on x { NumberAnimation{ duration:100; easing.type: Easing.OutBounce; } }
+    Behavior on y { NumberAnimation { duration:100; easing.type: Easing.OutBounce } }
 
     onUpdatePosition:{
         x = positionX - (width/2)
@@ -22,7 +22,7 @@ Rectangle {
     Timer{
         id: timerCobrinha
         running: true
-        interval: 23
+        interval: 60
         repeat: true
         onTriggered: {
 

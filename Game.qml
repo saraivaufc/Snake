@@ -17,6 +17,9 @@ ApplicationWindow {
         height: root.height
         anchors.centerIn: parent
 
+
+        signal gameOver();
+
         Image {
             id: background
             width: parent.width
@@ -77,6 +80,11 @@ ApplicationWindow {
             GCobra.startGame(campo);
         }
 
+
+        onGameOver: {
+            console.log("Morreu!!");
+            root.close();
+        }
 
     }
 

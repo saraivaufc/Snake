@@ -5,7 +5,7 @@ var mousePositionX = 200;
 var mousePositionY = 200;
 
 //DEFINE DOS MOVIMENTOS
-var distanciaDefault = 10;
+var distanciaDefault = 20;
 var distanciaX = 0;
 var distanciaY = 0;
 
@@ -20,8 +20,8 @@ var E2 = false;
 var E3 = false;
 
 function startGame(Campo){
-    for(var i=100 ; i>=0;i--){
-        adiciona(Campo, 0, 0);
+    for(var i=5 ; i>=0;i--){
+        adiciona(Campo, i*20, 1);
     }
     calcSpeed(cobra[0]);
 }
@@ -70,6 +70,16 @@ function update(Campo){
     }
     rotate(cobra[0], cobra[1]);
     moveNodes();
+    if((cobra[0].x >= Campo.width || cobra[0].x <= 0) || (cobra[0].y >= Campo.height || cobra[0].y <= 0) ){
+        gameOver(Campo);
+    }
+    for(var i = 4 ; i < cobra.length;i++){
+        if(verificaColisao(cobra[0], cobra[i])){
+            gameOver(Campo);
+            return;
+        }
+    }
+
 }
 
 function moveNodes(){
@@ -116,8 +126,28 @@ function move(){
     cobra[0].y += distanciaY;
 }
 
+function gameOver(Campo){
+    Campo.gameOver();
+}
+
 function setPosicao(x, y){
     mousePositionX = x;
     mousePositionY = y;
     calcSpeed(cobra[0]);
+}
+
+function verificaColisao(A, B){
+    if(A.x > (B.x + B.width)){
+        return false;
+    }
+    if((A.x + A.width) < B.x){
+        return false;
+    }
+    if(A.y >(B.y + B.height)){
+        return false;
+    }
+    if((A.y + A.height) < B.y){
+        return false;
+    }
+    return true;
 }
