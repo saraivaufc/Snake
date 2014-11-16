@@ -50,7 +50,7 @@ function adiciona(Campo,xPosition , yPosition){
     G %= 100;
     B %= 100;
 
-    var component = Qt.createComponent("Node.qml");
+    var component = Qt.createComponent("/Qml/Node.qml");
     var node = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
                                               "color":Qt.rgba(R/100, G/100,B/100 , 4)});

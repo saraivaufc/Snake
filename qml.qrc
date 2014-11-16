@@ -1,10 +1,15 @@
 <RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
+    <qresource prefix="/Qml">
+        <file>Game.qml</file>
         <file>Node.qml</file>
         <file>Comida.qml</file>
+        <file>Relogio.qml</file>
+    </qresource>
+    <qresource lang="JavaScripts" prefix="/Js">
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
+    </qresource>
+    <qresource lang="Imagens" prefix="/Img">
         <file>background.jpg</file>
     </qresource>
 </RCC>
