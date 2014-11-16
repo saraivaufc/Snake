@@ -7,8 +7,8 @@ import "GerenciadorComida.js" as GComida
 
 Rectangle{
     id:root
-    width: 500
-    height: 500
+    width: parent.width
+    height: parent.height
     border.color: "black";
     border.width: 10;
 
@@ -25,7 +25,6 @@ Rectangle{
             height: parent.height
             anchors.centerIn: parent
             source: "background.jpg"
-            fillMode: Image.PreserveAspectCrop
         }
 
 
