@@ -3,7 +3,6 @@
         <file>main.qml</file>
         <file>Node.qml</file>
         <file>Comida.qml</file>
-        <file>Snake.qml</file>
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
         <file>background.jpg</file>
