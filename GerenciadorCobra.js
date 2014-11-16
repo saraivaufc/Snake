@@ -20,7 +20,7 @@ var E2 = false;
 var E3 = false;
 
 function startGame(Campo){
-    for(var i=20 ; i>=0;i--){
+    for(var i=100 ; i>=0;i--){
         adiciona(Campo, 0, 0);
     }
     calcSpeed(cobra[0]);
@@ -49,8 +49,6 @@ function adiciona(Campo,xPosition , yPosition){
     R %= 100;
     G %= 100;
     B %= 100;
-
-    console.log(R, G, B);
 
     var component = Qt.createComponent("Node.qml");
     var node = component.createObject(Campo, {"x":xPosition,
