@@ -31,13 +31,11 @@ Rectangle{
 
         Timer {
             id: updateSnake;
-            interval: 1000/20;
+            interval: 1000/30;
             repeat: true;
             running: true;
             onTriggered: {
-                for(var i = 0 ; i<30; i++){
-                    GCobra.update(campo);
-                }
+               GCobra.update(campo);
             }
         }
 

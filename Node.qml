@@ -8,10 +8,11 @@ Rectangle {
     visible: true
     antialiasing: true
 
+
     signal updatePosition(real positionX, real positionY);
 
-    Behavior on x { PropertyAnimation { easing.type: Easing.Linear; } }
-    Behavior on y { PropertyAnimation { easing.type: Easing.Linear; } }
+    Behavior on x { NumberAnimation{ duration:70; easing.type: Easing.OutBounce; } }
+    Behavior on y { NumberAnimation { duration:70; easing.type: Easing.OutBounce } }
 
     onUpdatePosition:{
         x = positionX - (width/2)

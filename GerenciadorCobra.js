@@ -9,8 +9,8 @@ var DONW = "V";
 
 
 var cobra = [];
-var mousePositionX = 100;
-var mousePositionY = 100;
+var mousePositionX = 200;
+var mousePositionY = 200;
 var direcao = RIGHT;
 
 
@@ -20,17 +20,54 @@ var distanciaX = 0;
 var distanciaY = 0;
 
 
+//COLORS
+var R = 99;
+var G = 0;
+var B = 0;
+
+var E1 = false;
+var E2 = false;
+var E3 = false;
+
 function startGame(Campo){
-    adiciona(Campo, 0, 0);
-    adiciona(Campo, 0, 0);
+    for(var i=100 ; i>=0;i--){
+        adiciona(Campo, 0, 0);
+    }
+    calcSpeed(cobra[0]);
 }
 
 
 function adiciona(Campo,xPosition , yPosition){
+    if(R >= 97 || E1 == true){
+        R +=97;
+        G +=3;
+        E1 = true;
+        E3 = false;
+    }
+    if(G >= 97 || E2 == true){
+        G += 97;
+        B +=3;
+        E2 = true;
+        E1 = false;
+    }
+    if(B >= 97 || E3 == true){
+        B += 97;
+        R +=3;
+        E3 = true;
+        E2 = false;
+    }
+    R %= 100;
+    G %= 100;
+    B %= 100;
+
+    console.log(R, G, B);
+
     var component = Qt.createComponent("Node.qml");
     var node = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
-                                              "color":Qt.rgba(Math.random(), Math.random(), Math.random(), 4)});
+                                              "color":Qt.rgba(R/100, G/100,B/100 , 4)});
+
+
     node.x = xPosition;
     node.y = yPosition;
     cobra.push(node);
@@ -40,16 +77,16 @@ function update(Campo){
     var xPos = cobra[0].x;
     var yPos = cobra[0].y;
     move();
-    for(var  k =0 ; k< cobra.length-1; k++){
-        rotate(cobra[k], cobra[k+1]);
+    for(var k = 1; k < cobra.length; k++){
+        rotate(cobra[k], cobra[k-1]);
     }
-    rotate(cobra[cobra.length-1], cobra[cobra.length-2]);
-    moveNodes(1,xPos, yPos);
+    rotate(cobra[0], cobra[1]);
+    moveNodes();
 }
 
-function moveNodes(index , x, y){
+function moveNodes(){
 
-    for(var i = cobra.length-1 ; i >= 1 ; i--){
+    for(var i = 1; i < cobra.length ; i++){
         cobra[i].x = cobra[i-1].x;
         cobra[i].y = cobra[i-1].y;
     }
