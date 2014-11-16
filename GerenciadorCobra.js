@@ -22,10 +22,7 @@ var distanciaY = 0;
 
 function startGame(Campo){
     adiciona(Campo, 0, 0);
-    adiciona(Campo,0,0);
-    adiciona(Campo,0,0);
-    adiciona(Campo,0,0);
-    adiciona(Campo,0,0);
+    adiciona(Campo, 0, 0);
 }
 
 
@@ -43,20 +40,39 @@ function update(Campo){
     var xPos = cobra[0].x;
     var yPos = cobra[0].y;
     move();
+    for(var  k =0 ; k< cobra.length-1; k++){
+        rotate(cobra[k], cobra[k+1]);
+    }
+    rotate(cobra[cobra.length-1], cobra[cobra.length-2]);
     moveNodes(1,xPos, yPos);
 }
 
 function moveNodes(index , x, y){
-    if(index >= cobra.length){
-        return;
+
+    for(var i = cobra.length-1 ; i >= 1 ; i--){
+        cobra[i].x = cobra[i-1].x;
+        cobra[i].y = cobra[i-1].y;
     }
-    var m = cobra[index].x;
-    var n = cobra[index].y;
-    cobra[index].x = x;
-    cobra[index].y = y;
-    moveNodes(index+1, m, n);
 }
 
+
+function rotate(A, B){
+    var catOp = B.y - A.y;
+    var catAd = B.x - A.x;
+    var hip = Math.sqrt(Math.pow(catOp,2) + Math.pow(catAd,2));
+
+    var sin = catOp/hip;
+    var cos = catAd/hip;
+
+    var theta;
+    if(cos < 0){
+        theta = Math.PI -Math.asin(sin);
+    }else{
+        theta = Math.asin(sin);
+    }
+
+    A.rotation= (theta * 180)/Math.PI;
+}
 
 function calcSpeed(node){
     var D = Math.sqrt(   Math.pow(mousePositionX-node.x,2) + Math.pow(mousePositionY-node.y,2)  );
@@ -64,8 +80,6 @@ function calcSpeed(node){
     var DY = mousePositionY - node.y;
     distanciaX = (distanciaDefault * DX)/D;
     distanciaY = (distanciaDefault * DY)/D;
-    console.log(distanciaX);
-
 }
 
 function move(){

@@ -9,9 +9,9 @@ Rectangle{
     id:root
     width: 500
     height: 500
-    border.color: "blue";
+    border.color: "black";
     border.width: 10;
-    radius: 10;
+
     Rectangle{
         id: campo;
         visible: true
@@ -24,18 +24,20 @@ Rectangle{
             width: parent.width
             height: parent.height
             anchors.centerIn: parent
-            source: "background.png"
+            source: "background.jpg"
             fillMode: Image.PreserveAspectCrop
         }
 
 
         Timer {
             id: updateSnake;
-            interval: 1000/15;
+            interval: 1000/20;
             repeat: true;
             running: true;
             onTriggered: {
-                GCobra.update(campo);
+                for(var i = 0 ; i<30; i++){
+                    GCobra.update(campo);
+                }
             }
         }
 

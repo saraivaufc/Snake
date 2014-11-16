@@ -6,6 +6,7 @@ Rectangle {
     height: 20
     color: "blue";
     visible: true
+    antialiasing: true
 
     signal updatePosition(real positionX, real positionY);
 
