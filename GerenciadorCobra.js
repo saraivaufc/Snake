@@ -20,7 +20,7 @@ var E2 = false;
 var E3 = false;
 
 function startGame(Campo){
-    for(var i=20 ; i>=0;i--){
+    for(var i=100 ; i>=0;i--){
         adiciona(Campo, 0, 0);
     }
     calcSpeed(cobra[0]);
@@ -50,16 +50,14 @@ function adiciona(Campo,xPosition , yPosition){
     G %= 100;
     B %= 100;
 
-    console.log(R, G, B);
-
     var component = Qt.createComponent("Node.qml");
     var node = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
-                                              "color":Qt.rgba(R/100, G/100,B/100 , 4)});
+                                              "color":Qt.rgba(R/100, G/100,B/100 , 4),
+                                               "largura":Campo.largura,
+                                               "altura":Campo.altura
+                                      });
 
-
-    node.x = xPosition;
-    node.y = yPosition;
     cobra.push(node);
 }
 
@@ -72,6 +70,10 @@ function update(Campo){
     }
     rotate(cobra[0], cobra[1]);
     moveNodes();
+    for(var i = 0 ; i<cobra.length;i++){
+        cobra[i].altura = Campo.altura;
+        cobra[i].largura = Campo.largura;
+    }
 }
 
 function moveNodes(){
