@@ -19,7 +19,7 @@ Rectangle{
 
     Timer {
         id: updateSnake;
-        interval: 10;
+        interval: 100;
         repeat: true;
         running: true;
         onTriggered: {

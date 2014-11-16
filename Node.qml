@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Rectangle {
     id: node
-    width: 10
-    height: 10
+    width: 20
+    height: 20
     color: "blue";
     visible: true
 
