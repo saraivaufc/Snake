@@ -6,12 +6,12 @@ import "GerenciadorCobra.js" as GCobra
 import "GerenciadorComida.js" as GComida
 
 Rectangle{
-    id:root;
-    width: 500; height: 500;
+    id:root
+    width: 500
+    height: 500
     border.color: "blue";
-    border.width: 6;
+    border.width: 10;
     radius: 10;
-
     Rectangle{
         id: campo;
         visible: true
@@ -21,7 +21,9 @@ Rectangle{
 
         Image {
             id: background
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            anchors.centerIn: parent
             source: "background.png"
             fillMode: Image.PreserveAspectCrop
         }
@@ -29,7 +31,7 @@ Rectangle{
 
         Timer {
             id: updateSnake;
-            interval: 10;
+            interval: 1000/15;
             repeat: true;
             running: true;
             onTriggered: {

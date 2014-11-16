@@ -9,13 +9,16 @@ var DONW = "V";
 
 
 var cobra = [];
-var mousePositionX = 0;
-var mousePositionY = 0;
+var mousePositionX = 100;
+var mousePositionY = 100;
 var direcao = RIGHT;
 
 
 //DEFINE DOS MOVIMENTOS
-var distanciaMove = 20;
+var distanciaDefault = 20;
+var distanciaX = 0;
+var distanciaY = 0;
+
 
 function startGame(Campo){
     adiciona(Campo, 0, 0);
@@ -39,8 +42,7 @@ function adiciona(Campo,xPosition , yPosition){
 function update(Campo){
     var xPos = cobra[0].x;
     var yPos = cobra[0].y;
-    moveX();
-    moveY();
+    move();
     moveNodes(1,xPos, yPos);
 }
 
@@ -56,51 +58,27 @@ function moveNodes(index , x, y){
 }
 
 
+function calcSpeed(node){
+    var D = Math.sqrt(   Math.pow(mousePositionX-node.x,2) + Math.pow(mousePositionY-node.y,2)  );
+    var DX = mousePositionX - node.x;
+    var DY = mousePositionY - node.y;
+    distanciaX = (distanciaDefault * DX)/D;
+    distanciaY = (distanciaDefault * DY)/D;
+    console.log(distanciaX);
 
-
-function moveX(){
-    if(cobra.length <= 0){
-        console.log("Cobra vazia!!");
-        return;
-    }
-
-    if(parseInt(mousePositionX,10) > parseInt(cobra[0].x,10)){
-        cobra[0].x+= distanciaMove;
-        direcao = RIGHT;
-    }else if(parseInt(mousePositionX,10) < parseInt(cobra[0].x,10)){
-        cobra[0].x-=distanciaMove;
-        direcao = LEFT;
-    }else if(parseInt(mousePositionX,10) === parseInt(cobra[0].x,10)){
-        if(direcao === RIGHT){
-            cobra[0].x+=distanciaMove;
-        }else if(direcao === LEFT){
-            cobra[0].x-=distanciaMove;
-        }
-    }
 }
 
-function moveY(){
+function move(){
     if(cobra.length <= 0){
         console.log("Cobra vazia!!");
         return;
     }
-
-    if(parseInt(mousePositionY,10) > parseInt(cobra[0].y,10)){
-        cobra[0].y+=distanciaMove;
-        direcao = DONW;
-    }else if(parseInt(mousePositionY,10) < parseInt(cobra[0].y,10)){
-        cobra[0].y-=distanciaMove;
-        direcao = UP;
-    }else  if(parseInt(mousePositionY,10) === parseInt(cobra[0].y,10)){
-        if(direcao === DONW){
-            cobra[0].y+=distanciaMove;
-        }else if(direcao === UP){
-            cobra[0].y-=distanciaMove;
-        }
-    }
+    cobra[0].x += distanciaX;
+    cobra[0].y += distanciaY;
 }
 
 function setPosicao(x, y){
-    mousePositionX = parseInt(x,10);
-    mousePositionY = parseInt(y,10);
+    mousePositionX = x;
+    mousePositionY = y;
+    calcSpeed(cobra[0]);
 }
