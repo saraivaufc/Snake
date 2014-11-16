@@ -1,21 +1,11 @@
 .pragma library
 
-//DEFINES DAS DIRECOES
-
-var LEFT = "<";
-var RIGHT = ">";
-var UP = "A";
-var DONW = "V";
-
-
 var cobra = [];
 var mousePositionX = 200;
 var mousePositionY = 200;
-var direcao = RIGHT;
-
 
 //DEFINE DOS MOVIMENTOS
-var distanciaDefault = 20;
+var distanciaDefault = 10;
 var distanciaX = 0;
 var distanciaY = 0;
 
@@ -30,7 +20,7 @@ var E2 = false;
 var E3 = false;
 
 function startGame(Campo){
-    for(var i=100 ; i>=0;i--){
+    for(var i=20 ; i>=0;i--){
         adiciona(Campo, 0, 0);
     }
     calcSpeed(cobra[0]);

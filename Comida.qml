@@ -1,8 +1,8 @@
 import QtQuick 2.0
 
 Rectangle {
-    width: 20
-    height: 20
+    width: 10
+    height: 10
 
     Component.onCompleted:{
         x = Math.random() * parent.width - width

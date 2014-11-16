@@ -41,12 +41,13 @@ Rectangle{
         MouseArea{
             id:mouseAreaCampo;
             anchors.fill: parent;
-            onClicked : {
+            onMouseXChanged: {
                 GCobra.setPosicao(mouse.x, mouse.y);
             }
-            onPressed: {
+            onMouseYChanged: {
                 GCobra.setPosicao(mouse.x, mouse.y);
             }
+
         }
 
         Rectangle{
