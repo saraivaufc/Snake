@@ -20,13 +20,8 @@ var E2 = false;
 var E3 = false;
 
 function startGame(Campo){
-<<<<<<< HEAD
     for(var i=5 ; i>=0;i--){
         adiciona(Campo, i*20, 1);
-=======
-    for(var i=100 ; i>=0;i--){
-        adiciona(Campo, 0, 0);
->>>>>>> fd026fcf3f674747111cb172e5b15da46875a6ad
     }
     calcSpeed(cobra[0]);
 }
@@ -55,18 +50,14 @@ function adiciona(Campo,xPosition , yPosition){
     G %= 100;
     B %= 100;
 
-<<<<<<< HEAD
     var component = Qt.createComponent("/Qml/Node.qml");
-=======
-    var component = Qt.createComponent("Node.qml");
->>>>>>> fd026fcf3f674747111cb172e5b15da46875a6ad
     var node = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
-                                              "color":Qt.rgba(R/100, G/100,B/100 , 4),
-                                               "largura":Campo.largura,
-                                               "altura":Campo.altura
-                                      });
+                                              "color":Qt.rgba(R/100, G/100,B/100 , 4)});
 
+
+    node.x = xPosition;
+    node.y = yPosition;
     cobra.push(node);
 }
 
@@ -79,7 +70,6 @@ function update(Campo){
     }
     rotate(cobra[0], cobra[1]);
     moveNodes();
-<<<<<<< HEAD
     if((cobra[0].x >= Campo.width || cobra[0].x <= 0) || (cobra[0].y >= Campo.height || cobra[0].y <= 0) ){
         gameOver(Campo);
     }
@@ -90,12 +80,6 @@ function update(Campo){
         }
     }
 
-=======
-    for(var i = 0 ; i<cobra.length;i++){
-        cobra[i].altura = Campo.altura;
-        cobra[i].largura = Campo.largura;
-    }
->>>>>>> fd026fcf3f674747111cb172e5b15da46875a6ad
 }
 
 function moveNodes(){
