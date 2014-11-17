@@ -15,6 +15,5 @@ function criarComida(Campo) {
 
 function comeu(index){
     var element = comidas.splice(index,1);
-    console.log(element.length);
     element[0].destroy();
 }

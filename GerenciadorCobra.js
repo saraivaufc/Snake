@@ -21,7 +21,7 @@ var E3 = false;
 
 function startGame(Campo){
     adiciona(Campo, Campo.width/2,Campo.height/2);
-    for(var i=50 ; i>=1;i--){
+    for(var i=3 ; i>=1;i--){
         adiciona(Campo,0,0);
         criarComida(Campo);
     }
@@ -85,6 +85,8 @@ function update(Campo){
     for(var i=0 ; i< comidas.length ; i++){
         if(verificaColisao(cobra[0],comidas[i])){
             comeu(i);
+            criarComida(Campo);
+            crescer(Campo);
             return;
         }
     }
@@ -168,4 +170,8 @@ function destroy(){
     for(var i =0 ; i < cobra.length ; i++){
         cobra.pop().destroy();
     }
+}
+
+function crescer(Campo){
+    adiciona(Campo, cobra[cobra.length-1].x, cobra[cobra.length-1].y);
 }
