@@ -87,6 +87,8 @@ ApplicationWindow {
                 smooth: true
                 Image {
                     id: imagemSair
+                    width: parent.width
+                    height: parent.height
                     anchors.fill: parent
                     source: "/Img/sair.png"
                 }
@@ -114,7 +116,6 @@ ApplicationWindow {
             updateSnake.stop();
             GCobra.destroy();
             gameover.visible = true;
-            console.log("Morreu!!");
         }
 
     }
