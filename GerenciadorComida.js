@@ -1,5 +1,4 @@
 
-
 var comidas = [];
 
 function criarComida(Campo) {
@@ -7,11 +6,8 @@ function criarComida(Campo) {
     var status = comida.createObject(Campo);
     if(status === null){
         console.log("Falha ao adicionar Comida!!");
+        return;
     }
+    comidas.push(status);
 
-}
-
-
-function getComidas(){
-    return comidas;
 }

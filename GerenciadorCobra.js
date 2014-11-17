@@ -1,3 +1,5 @@
+Qt.include("/Js/GerenciadorComida.js");
+
 var cobra = [];
 var mousePositionX = 1000;
 var mousePositionY = 1000;
@@ -19,7 +21,8 @@ var E3 = false;
 
 function startGame(Campo){
     adiciona(Campo, Campo.width/2,Campo.height/2);
-    for(var i=100 ; i>=1;i--){
+    criarComida(Campo);
+    for(var i=10 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
@@ -74,6 +77,15 @@ function update(Campo){
     }
     for(var i = 4 ; i < cobra.length;i++){
         if(verificaColisao(cobra[0], cobra[i])){
+            gameOver(Campo);
+            return;
+        }
+    }
+
+    console.log(comidas.length);
+    for(var i=0 ; i< comidas.length ; i++){
+        if(verificaColisao(cobra[0],comidas[i])){
+            console.log("Comeuu!!");
             gameOver(Campo);
             return;
         }

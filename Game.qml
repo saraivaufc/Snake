@@ -12,7 +12,7 @@ ApplicationWindow {
     visible: true
     color: "black"
 
-    visibility: "FullScreen";
+    //visibility: "FullScreen";
 
     Rectangle{
         id: campo;
@@ -57,7 +57,6 @@ ApplicationWindow {
 
         Component.onCompleted: {
             GCobra.startGame(campo);
-            GComida.criarComida(campo);
         }
 
 

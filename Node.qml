@@ -11,8 +11,8 @@ Rectangle {
 
     signal updatePosition(real positionX, real positionY);
 
-    Behavior on x { NumberAnimation{ duration:60; easing.type: Easing.OutBounce; } }
-    Behavior on y { NumberAnimation { duration:60; easing.type: Easing.OutBounce } }
+    Behavior on x { NumberAnimation{ duration:100; easing.type: Easing.OutBounce; } }
+    Behavior on y { NumberAnimation { duration:100; easing.type: Easing.OutBounce } }
 
     onUpdatePosition:{
         x = positionX - (width/2)

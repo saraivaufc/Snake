@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
+    id:comida
     width: 20
     height: 20
 
