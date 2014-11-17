@@ -3,7 +3,7 @@
         <file>Game.qml</file>
         <file>Node.qml</file>
         <file>Comida.qml</file>
-        <file>Relogio.qml</file>
+        <file>Pontuacao.qml</file>
     </qresource>
     <qresource prefix="/Js" lang="JavaScripts">
         <file>GerenciadorCobra.js</file>

@@ -7,12 +7,13 @@ import "/Js/GerenciadorComida.js" as GComida
 
 ApplicationWindow {
     id:root
-    width: 500
-    height: 500
+    width: 1200
+    height: 700
     visible: true
     color: "black"
 
-    //visibility: "FullScreen";
+    visibility: "FullScreen";
+
 
     Rectangle{
         id: campo;
@@ -31,7 +32,6 @@ ApplicationWindow {
             anchors.centerIn: parent
             source: "/Img/background.jpg"
         }
-
 
         Timer {
             id: updateSnake;
@@ -65,6 +65,10 @@ ApplicationWindow {
             updateSnake.stop();
             GCobra.destroy();
             gameover.visible = true;
+        }
+
+        Pontuacao{
+            id: pontuacao
         }
 
     }

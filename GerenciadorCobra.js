@@ -21,9 +21,9 @@ var E3 = false;
 
 function startGame(Campo){
     adiciona(Campo, Campo.width/2,Campo.height/2);
-    criarComida(Campo);
-    for(var i=10 ; i>=1;i--){
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
+        criarComida(Campo);
     }
     calcSpeed(cobra[0]);
 }
@@ -82,11 +82,9 @@ function update(Campo){
         }
     }
 
-    console.log(comidas.length);
     for(var i=0 ; i< comidas.length ; i++){
         if(verificaColisao(cobra[0],comidas[i])){
-            console.log("Comeuu!!");
-            gameOver(Campo);
+            comeu(i);
             return;
         }
     }
@@ -140,6 +138,7 @@ function move(){
 function gameOver(Campo){
     Campo.gameOver();
 }
+
 
 function setPosicao(x, y){
     mousePositionX = x;
