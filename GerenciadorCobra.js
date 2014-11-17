@@ -1,4 +1,3 @@
-.pragma library
 
 var cobra = [];
 var mousePositionX = 200;
@@ -134,6 +133,7 @@ function setPosicao(x, y){
     mousePositionX = x;
     mousePositionY = y;
     calcSpeed(cobra[0]);
+
 }
 
 function verificaColisao(A, B){
@@ -150,4 +150,11 @@ function verificaColisao(A, B){
         return false;
     }
     return true;
+}
+
+
+function destroy(){
+    for(var i =0 ; i < cobra.length ; i++){
+        cobra.pop().destroy();
+    }
 }

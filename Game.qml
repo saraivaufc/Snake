@@ -9,7 +9,8 @@ ApplicationWindow {
     id:root
     width: 500
     height: 500
-    visibility: "FullScreen"
+    visible: true
+    //visibility: "FullScreen";
 
     Rectangle{
         id: campo;
@@ -72,14 +73,48 @@ ApplicationWindow {
 
         }
 
+        Image {
+            id:gameover
+            width: parent.width
+            height:parent.height
+            visible: false;
+            source: "/Img/gameover.jpg"
+
+            Rectangle{
+                id: sair
+                width: 100
+                height: 100
+                smooth: true
+                Image {
+                    id: imagemSair
+                    anchors.fill: parent
+                    source: "/Img/sair.png"
+                }
+                antialiasing: true
+                x : (parent.width/2);
+                y : (parent.height/2);
+
+                MouseArea{
+                    id: mouseAreaSair
+                    anchors.fill: parent
+                    onClicked: {
+                        root.close();
+                    }
+                }
+            }
+        }
+
         Component.onCompleted: {
             GCobra.startGame(campo);
         }
 
 
+
         onGameOver: {
+            updateSnake.stop();
+            GCobra.destroy();
+            gameover.visible = true;
             console.log("Morreu!!");
-            root.close();
         }
 
     }
