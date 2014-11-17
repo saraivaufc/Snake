@@ -1,7 +1,6 @@
-
 var cobra = [];
-var mousePositionX = 200;
-var mousePositionY = 200;
+var mousePositionX = 1000;
+var mousePositionY = 1000;
 
 //DEFINE DOS MOVIMENTOS
 var distanciaDefault = 20;
@@ -19,8 +18,9 @@ var E2 = false;
 var E3 = false;
 
 function startGame(Campo){
-    for(var i=5 ; i>=0;i--){
-        adiciona(Campo, i*20, 1);
+    adiciona(Campo, Campo.width/2,Campo.height/2);
+    for(var i=100 ; i>=1;i--){
+        adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
 }

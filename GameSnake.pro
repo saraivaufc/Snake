@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets 3dquick
+QT += qml quick widgets
 
 SOURCES += main.cpp
 

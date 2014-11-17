@@ -10,13 +10,15 @@ ApplicationWindow {
     width: 500
     height: 500
     visible: true
-    //visibility: "FullScreen";
+    color: "black"
+
+    visibility: "FullScreen";
 
     Rectangle{
         id: campo;
         visible: true
-        width: root.width
-        height: root.height
+        width: root.width-20
+        height: root.height-20
         anchors.centerIn: parent
 
 
@@ -53,61 +55,9 @@ ApplicationWindow {
 
         }
 
-        Rectangle{
-            id: botaoAdicionar
-            width: 40
-            height: 40
-            x: parent.width - width
-            y: parent.height - height
-            color: "red"
-            visible: true
-
-            MouseArea{
-                id: mouseAreaBotaoAdicionar
-                anchors.fill: parent
-                onClicked:{
-                    GComida.criarComida(campo);
-                }
-
-            }
-
-        }
-
-        Image {
-            id:gameover
-            width: parent.width
-            height:parent.height
-            visible: false;
-            source: "/Img/gameover.jpg"
-
-            Rectangle{
-                id: sair
-                width: 100
-                height: 100
-                smooth: true
-                Image {
-                    id: imagemSair
-                    width: parent.width
-                    height: parent.height
-                    anchors.fill: parent
-                    source: "/Img/sair.png"
-                }
-                antialiasing: true
-                x : (parent.width/2);
-                y : (parent.height/2);
-
-                MouseArea{
-                    id: mouseAreaSair
-                    anchors.fill: parent
-                    onClicked: {
-                        root.close();
-                    }
-                }
-            }
-        }
-
         Component.onCompleted: {
             GCobra.startGame(campo);
+            GComida.criarComida(campo);
         }
 
 
@@ -119,5 +69,39 @@ ApplicationWindow {
         }
 
     }
+
+    Image {
+        id:gameover
+        width: parent.width
+        height:parent.height
+        visible: false;
+        source: "/Img/gameover.jpg"
+
+        Rectangle{
+            id: sair
+            width: 100
+            height: 100
+            smooth: true
+            Image {
+                id: imagemSair
+                width: parent.width
+                height: parent.height
+                anchors.fill: parent
+                source: "/Img/sair.png"
+            }
+            antialiasing: true
+            x : (parent.width/2);
+            y : (parent.height/2);
+
+            MouseArea{
+                id: mouseAreaSair
+                anchors.fill: parent
+                onClicked: {
+                    root.close();
+                }
+            }
+        }
+    }
+
 
 }
