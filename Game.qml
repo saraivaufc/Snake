@@ -9,7 +9,8 @@ ApplicationWindow {
     id:root
     width: 500
     height: 500
-    visible: true
+    visibility: "FullScreen"
+
     Rectangle{
         id: campo;
         visible: true
@@ -41,11 +42,6 @@ ApplicationWindow {
 
         MouseArea{
             id:mouseAreaCampo;
-            anchors.rightMargin: 0
-            anchors.bottomMargin: 0
-            anchors.leftMargin: 0
-            anchors.topMargin: 0
-            hoverEnabled: true
             anchors.fill: parent;
             onMouseXChanged: {
                 GCobra.setPosicao(mouse.x, mouse.y);
