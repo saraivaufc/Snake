@@ -16,6 +16,16 @@ Rectangle {
 
     property int segundos: 0 ;
 
+    Timer{
+        id: timePontos
+        interval: 1000/5
+        running: true
+        repeat: true
+        onTriggered: {
+            pontuacao.text = GPontuacao.getPontos();
+        }
+    }
+
     Timer {
         id: timeTempo
         interval: 1000;
@@ -63,7 +73,7 @@ Rectangle {
         y: 118
         width: 29
         height: 18
-        text: qsTr("000")
+        text: qsTr("0")
         font.pixelSize: 21
     }
 
