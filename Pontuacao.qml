@@ -11,6 +11,8 @@ Rectangle {
     height: 151
     visible: true
     color:"transparent";
+    border.color: "#00000000"
+    opacity: 1
     border.width: 4
     z:100;
 
@@ -44,6 +46,11 @@ Rectangle {
         width: 68
         height: 22
         text: qsTr("Tempo")
+        clip: false
+        style: Text.Normal
+        font.underline: false
+        font.bold: true
+        font.family: "Times New Roman"
         font.pixelSize: 21
     }
 
@@ -54,6 +61,8 @@ Rectangle {
         width: 104
         height: 24
         text: qsTr("Pontuaçao")
+        font.family: "Times New Roman"
+        font.bold: true
         font.pixelSize: 21
     }
 
@@ -64,6 +73,8 @@ Rectangle {
         width: 59
         height: 24
         text: qsTr("00:00")
+        font.family: "Times New Roman"
+        font.bold: true
         font.pixelSize: 21
     }
 
@@ -74,6 +85,8 @@ Rectangle {
         width: 29
         height: 18
         text: qsTr("0")
+        font.family: "Times New Roman"
+        font.bold: true
         font.pixelSize: 21
     }
 

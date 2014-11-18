@@ -6,12 +6,12 @@
         <file>Pontuacao.qml</file>
         <file>Cabeca.qml</file>
     </qresource>
-    <qresource prefix="/Js" lang="JavaScripts">
+    <qresource lang="JavaScripts" prefix="/Js">
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
         <file>GerenciadorPontuacao.js</file>
     </qresource>
-    <qresource prefix="/Img" lang="Imagens">
+    <qresource lang="Imagens" prefix="/Img">
         <file>background.jpg</file>
         <file>gameover.jpg</file>
         <file>sair.png</file>
@@ -20,5 +20,6 @@
         <file>nodeFim2.png</file>
         <file>nodeFim3.png</file>
         <file>cabeca.png</file>
+        <file>rato.png</file>
     </qresource>
 </RCC>

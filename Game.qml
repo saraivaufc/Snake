@@ -57,6 +57,10 @@ ApplicationWindow {
 
         }
 
+        Pontuacao{
+            id: pontuacao
+        }
+
         Component.onCompleted: {
             GCobra.startGame(campo);
         }
@@ -73,9 +77,7 @@ ApplicationWindow {
             pontuacao.inclementaPontuacao();
         }
 
-        Pontuacao{
-            id: pontuacao
-        }
+
 
     }
 

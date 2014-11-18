@@ -11,7 +11,6 @@ Rectangle {
 
     property var sourceImagem : "/Img/node.png";
     property int timerCrescer;
-    property var imagemColor: "#ff0000";
 
 
     Rectangle{
@@ -26,6 +25,7 @@ Rectangle {
            anchors.centerIn: parent
            source: sourceImagem;
            antialiasing: true
+
        }
     }
 
