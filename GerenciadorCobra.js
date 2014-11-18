@@ -37,9 +37,14 @@ function startGame(Campo){
     adiciona(Campo,0,0);
     adiciona(Campo,0,0);
 
-    for(var i=50 ; i>=1;i--){
+
+
+    criarComida(Campo);
+
+    criarComida(Campo);
+
+    for(var i=10 ; i>=1;i--){
         adiciona(Campo,0,0);
-        criarComida(Campo);
     }
     calcSpeed(cobra[0]);
 }
@@ -50,7 +55,6 @@ function updateColor() {
 
     for(var i = 0; i < 10; i++) {
 
-        //red = 100
         if(e1) {
             g += increment
             if(g % 100 >= (100 - increment)) {
@@ -164,9 +168,19 @@ function update(Campo){
             cobra[k].sourceImagem = nodeMeio;
         }
 
+        var color1 = cobra[cobra.length-1].color;
+        var color2 = cobra[cobra.length-2].color;
+        var color3 = cobra[cobra.length-3].color;
+
         cobra[cobra.length-1].sourceImagem = nodeFim1
+        cobra[cobra.length-1].color = "transparent";
+
+
         cobra[cobra.length-2].sourceImagem = nodeFim2
+        cobra[cobra.length-2].color = "transparent";
+
         cobra[cobra.length-3].sourceImagem = nodeFim3
+        cobra[cobra.length-3].color = "transparent";
 
     }
 

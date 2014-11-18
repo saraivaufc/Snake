@@ -23,7 +23,7 @@ Rectangle {
         },
         State {
             name: "COMENDO"
-            PropertyChanges{target: cabeca; width:60; height:60}
+            PropertyChanges{target: cabeca; width:70; height:70}
         }
     ]
 
@@ -34,7 +34,7 @@ Rectangle {
             NumberAnimation {
                 target: cabeca
                 properties: "width, height"
-                duration: 1000;
+                duration: 10;
             }
             onRunningChanged: {
                 comendo.running = true
