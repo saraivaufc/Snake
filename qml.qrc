@@ -5,11 +5,12 @@
         <file>Comida.qml</file>
         <file>Pontuacao.qml</file>
     </qresource>
-    <qresource prefix="/Js" lang="JavaScripts">
+    <qresource lang="JavaScripts" prefix="/Js">
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
+        <file>GerenciadorPontuacao.js</file>
     </qresource>
-    <qresource prefix="/Img" lang="Imagens">
+    <qresource lang="Imagens" prefix="/Img">
         <file>background.jpg</file>
         <file>gameover.jpg</file>
         <file>sair.png</file>

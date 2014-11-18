@@ -1,4 +1,7 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.1
+
+import "/Js/GerenciadorPontuacao.js" as GPontuacao
 
 Rectangle {
 
@@ -19,8 +22,8 @@ Rectangle {
         running: true;
         repeat: true
         onTriggered:{
-            segundos++;
-            tempo.text = segundos.toString();
+            GPontuacao.inclementaTempo();
+            tempo.text = GPontuacao.getTempo();
         }
     }
 
