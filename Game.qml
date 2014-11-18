@@ -88,9 +88,28 @@ ApplicationWindow {
 
         Rectangle{
             id: sair
-            width: 100
+            width: 200
             height: 100
             smooth: true
+            antialiasing: true
+            y : (parent.height/2);
+            x : -300
+
+            states: State {
+                name: "VISIVEL";
+                when: sair.visible === true
+                PropertyChanges {target: sair; x: (parent.width/2)}
+            }
+
+            transitions:
+                Transition {
+                    NumberAnimation {
+                        properties: "x";
+                        duration: 1000;
+                        easing.type: Easing.OutExpo;
+                    }
+                }
+
             Image {
                 id: imagemSair
                 width: parent.width
@@ -98,9 +117,6 @@ ApplicationWindow {
                 anchors.fill: parent
                 source: "/Img/sair.png"
             }
-            antialiasing: true
-            x : (parent.width/2);
-            y : (parent.height/2);
 
             MouseArea{
                 id: mouseAreaSair
@@ -110,6 +126,8 @@ ApplicationWindow {
                 }
             }
         }
+
+
     }
 
 
