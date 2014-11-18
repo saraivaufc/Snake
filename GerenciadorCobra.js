@@ -1,4 +1,5 @@
 Qt.include("/Js/GerenciadorComida.js");
+Qt.include("/Js/Funcoes.js");
 
 var cobra = [];
 var mousePositionX = 1000;
@@ -152,6 +153,7 @@ function update(Campo){
     }
 
     for(var i=0 ; i< comidas.length ; i++){
+        verificaColisaoParede(Campo);
         if(verificaColisao(cobra[0],comidas[i])){
             Campo.cobraComeu();
             cobra[0].state = "COMENDO";
@@ -203,24 +205,6 @@ function aumentarNodos(){
     }
 }
 
-function rotate(A, B){
-    var catOp = B.y - A.y;
-    var catAd = B.x - A.x;
-    var hip = Math.sqrt(Math.pow(catOp,2) + Math.pow(catAd,2));
-
-    var sin = catOp/hip;
-    var cos = catAd/hip;
-
-    var theta;
-    if(cos < 0){
-        theta = Math.PI -Math.asin(sin);
-    }else{
-        theta = Math.asin(sin);
-    }
-
-    A.rotation= (theta * 180)/Math.PI;
-}
-
 function calcSpeed(node){
     var D = Math.sqrt(   Math.pow(mousePositionX-node.x,2) + Math.pow(mousePositionY-node.y,2)  );
     var DX = mousePositionX - node.x;
@@ -248,22 +232,6 @@ function setPosicao(x, y){
     mousePositionY = y;
     calcSpeed(cobra[0]);
 
-}
-
-function verificaColisao(A, B){
-    if(A.x > (B.x + B.width)){
-        return false;
-    }
-    if((A.x + A.width) < B.x){
-        return false;
-    }
-    if(A.y >(B.y + B.height)){
-        return false;
-    }
-    if((A.y + A.height) < B.y){
-        return false;
-    }
-    return true;
 }
 
 

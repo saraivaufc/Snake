@@ -2,7 +2,6 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 
 import "/Js/GerenciadorCobra.js" as GCobra
-import "/Js/GerenciadorComida.js" as GComida
 
 
 ApplicationWindow {
@@ -12,7 +11,7 @@ ApplicationWindow {
     visible: true
     color: "black"
 
-    visibility: "FullScreen";
+   // visibility: "FullScreen";
 
 
     Rectangle{

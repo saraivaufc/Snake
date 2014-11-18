@@ -10,6 +10,7 @@
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
         <file>GerenciadorPontuacao.js</file>
+        <file>Funcoes.js</file>
     </qresource>
     <qresource lang="Imagens" prefix="/Img">
         <file>background.jpg</file>

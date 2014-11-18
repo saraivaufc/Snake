@@ -1,3 +1,5 @@
+Qt.include("/Js/Funcoes.js");
+
 var comidas = [];
 
 function criarComida(Campo) {
@@ -15,4 +17,16 @@ function criarComida(Campo) {
 function comeu(index){
     var element = comidas.splice(index,1);
     element[0].destroy();
+}
+
+
+function verificaColisaoParede(Campo){
+    for(var i = 0 ; i < comidas.length ; i++){
+        var x = comidas[i].x;
+        var y = comidas[i].y;
+        if(!verificaColisao(comidas[i], Campo)){
+            comidas[i].x = x;
+            comidas[i].y = y;
+        }
+    }
 }

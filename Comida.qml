@@ -10,7 +10,7 @@ Rectangle {
 
     Timer{
         id: timerUpdateDir
-        interval:2000
+        interval:1000
         repeat: true
         running: true
         onTriggered: {

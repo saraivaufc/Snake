@@ -7,8 +7,8 @@ Rectangle {
 
     property alias tempo: tempo
 
-    width: 185
-    height: 151
+    width: 175
+    height: 60
     visible: true
     color:"transparent";
     border.color: "#00000000"
@@ -41,11 +41,12 @@ Rectangle {
 
     Text {
         id: text1
-        x: 59
-        y: 13
+        x: 4
+        y: 8
         width: 68
         height: 22
         text: qsTr("Tempo")
+        font.italic: true
         clip: false
         style: Text.Normal
         font.underline: false
@@ -56,11 +57,12 @@ Rectangle {
 
     Text {
         id: text2
-        x: 41
-        y: 88
+        x: 79
+        y: 8
         width: 104
         height: 24
         text: qsTr("Pontuaçao")
+        font.italic: true
         font.family: "Times New Roman"
         font.bold: true
         font.pixelSize: 21
@@ -68,11 +70,12 @@ Rectangle {
 
     Text {
         id: tempo
-        x: 63
-        y: 49
+        x: 13
+        y: 36
         width: 59
         height: 24
         text: qsTr("00:00")
+        font.italic: true
         font.family: "Times New Roman"
         font.bold: true
         font.pixelSize: 21
@@ -80,23 +83,15 @@ Rectangle {
 
     Text {
         id: pontuacao
-        x: 79
-        y: 118
-        width: 29
+        x: 114
+        y: 36
+        width: 51
         height: 18
         text: qsTr("0")
+        font.italic: true
         font.family: "Times New Roman"
         font.bold: true
         font.pixelSize: 21
-    }
-
-    Rectangle {
-        id: rectangle1
-        x: 4
-        y: 79
-        width: 177
-        height: 3
-        color: "#240404"
     }
 
     function inclementaPontuacao(){
