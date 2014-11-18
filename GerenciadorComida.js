@@ -1,6 +1,7 @@
 Qt.include("/Js/Funcoes.js");
 
 var comidas = [];
+var dir = ">";
 
 function criarComida(Campo) {
     var comida = Qt.createComponent("/Qml/Comida.qml");
@@ -20,13 +21,33 @@ function comeu(index){
 }
 
 
-function verificaColisaoParede(Campo){
-    for(var i = 0 ; i < comidas.length ; i++){
-        var x = comidas[i].x;
-        var y = comidas[i].y;
-        if(!verificaColisao(comidas[i], Campo)){
-            comidas[i].x = x;
-            comidas[i].y = y;
+
+function calcProxPos(){
+    var pos = parseInt(Math.random() * 4);
+    if(pos === 0){
+        dir = "<";
+    }else if(pos === 1){
+        dir = ">";
+    }else if(pos === 2){
+        dir = "A";
+    }else{
+        dir = "V";
+    }
+
+    console.log(pos);
+}
+
+function updateComida(){
+
+    for(var i = 0 ; i< comidas.length; i++){
+        if(dir === ">"){
+            comidas[i].x+=5;
+        }else if(dir === "<"){
+            comidas[i].x-=5;
+        }else if(dir === "A"){
+            comidas[i].y-=5;
+        }else{
+            comidas[i].y+=5;
         }
     }
 }

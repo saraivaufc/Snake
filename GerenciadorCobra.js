@@ -153,7 +153,6 @@ function update(Campo){
     }
 
     for(var i=0 ; i< comidas.length ; i++){
-        verificaColisaoParede(Campo);
         if(verificaColisao(cobra[0],comidas[i])){
             Campo.cobraComeu();
             cobra[0].state = "COMENDO";
@@ -243,4 +242,12 @@ function destroy(){
 
 function crescer(Campo){
     adiciona(Campo, cobra[cobra.length-1].x, cobra[cobra.length-1].y);
+}
+
+function calculaPosicaoComida(){
+    calcProxPos();
+}
+
+function atualizaComida(){
+    updateComida();
 }

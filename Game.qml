@@ -44,6 +44,26 @@ ApplicationWindow {
             }
         }
 
+        Timer {
+            id: calculaPosicaoComida
+            interval: 1000;
+            repeat: true;
+            running: true;
+            onTriggered: {
+                GCobra.calculaPosicaoComida();
+            }
+        }
+
+        Timer {
+            id:timerUpdateComida
+            interval: 1000/30;
+            repeat: true;
+            running: true;
+            onTriggered: {
+                GCobra.atualizaComida();
+            }
+        }
+
         MouseArea{
             id:mouseAreaCampo;
             anchors.fill: parent;
