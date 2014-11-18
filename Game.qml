@@ -7,8 +7,8 @@ import "/Js/GerenciadorComida.js" as GComida
 
 ApplicationWindow {
     id:root
-    width: 1200
-    height: 700
+    width: 640
+    height: 480
     visible: true
     color: "black"
 

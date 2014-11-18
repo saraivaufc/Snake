@@ -4,10 +4,17 @@ Rectangle {
     id: node
     width: 20
     height: 20
-    color: "blue";
     visible: true
     antialiasing: true
 
+    property var sourceImagem : "/Img/node.png";
+
+    Image {
+        id: imagenNode
+        anchors.fill: parent
+        anchors.centerIn: parent
+        source: sourceImagem;
+    }
 
     signal updatePosition(real positionX, real positionY);
 

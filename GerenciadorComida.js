@@ -1,5 +1,3 @@
-Qt.include("/Js/GerenciadorPontuacao.js");
-
 var comidas = [];
 
 function criarComida(Campo) {
@@ -16,6 +14,5 @@ function criarComida(Campo) {
 
 function comeu(index){
     var element = comidas.splice(index,1);
-    inclementaPontos();
     element[0].destroy();
 }

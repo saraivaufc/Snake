@@ -10,18 +10,34 @@ var distanciaX = 0;
 var distanciaY = 0;
 
 
-//COLORS
-var R = 99;
-var G = 0;
-var B = 0;
 
-var E1 = false;
-var E2 = false;
-var E3 = false;
+//SOURCERS IMAGENS
+var nodeMeio = "/Img/node.png";
+var nodeFim1 = "/Img/nodeFim1.png";
+var nodeFim2 = "/Img/nodeFim2.png";
+var nodeFim3 = "/Img/nodeFim3.png";
+
+//COLORS
+var r = 99;
+var g = 0;
+var b = 0;
+
+var e1 = true;
+var e2 = false;
+var e3 = false;
+var e4 = false;
+var e5 = false;
+var e6 = false;
+
 
 function startGame(Campo){
-    adiciona(Campo, Campo.width/2,Campo.height/2);
-    for(var i=3 ; i>=1;i--){
+
+    adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
+    adiciona(Campo,0,0);
+    adiciona(Campo,0,0);
+    adiciona(Campo,0,0);
+
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
         criarComida(Campo);
     }
@@ -29,39 +45,89 @@ function startGame(Campo){
 }
 
 
-function adiciona(Campo,xPosition , yPosition){
-    if(R >= 97 || E1 == true){
-        R +=97;
-        G +=3;
-        E1 = true;
-        E3 = false;
-    }
-    if(G >= 97 || E2 == true){
-        G += 97;
-        B +=3;
-        E2 = true;
-        E1 = false;
-    }
-    if(B >= 97 || E3 == true){
-        B += 97;
-        R +=3;
-        E3 = true;
-        E2 = false;
-    }
-    R %= 100;
-    G %= 100;
-    B %= 100;
+function updateColor() {
+    var increment = 1;
 
+    for(var i = 0; i < 10; i++) {
+
+        //red = 100
+        if(e1) {
+            g += increment
+            if(g % 100 >= (100 - increment)) {
+                e1 = false
+                e2 = true
+            }
+        }
+        if(e2) {
+            r += (100 - increment)
+            if(r % 100 <= 0) {
+                console.log("r == 0!")
+                r = 0
+                e2 = false
+                e3 = true
+            }
+        }
+        if(e3) {
+            b += increment
+            if(b % 100 >= (100 - increment)) {
+                e3 = false
+                e4 = true
+            }
+        }
+        if(e4) {
+            g += (100-increment)
+            if(g % 100 <= 0) {
+                g = 0
+                e4 = false
+                e5 = true
+            }
+        }
+        if(e5) {
+            r += increment
+            if(r % 100 >= (100 - increment)) {
+                e5 = false
+                e6 = true
+            }
+        }
+        if(e6) {
+            b += (100 - increment)
+            if(b % 100 <= 0){
+                b = 0
+                e6 = false
+                e1 = true
+            }
+        }
+
+        r %= 100
+        g %= 100
+        b %= 100
+
+        //console.log(r+ " : " +g + " : " +b)
+    }
+}
+
+function adiciona(Campo,xPosition , yPosition){
+    updateColor();
     var component = Qt.createComponent("/Qml/Node.qml");
     var node = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
-                                              "color":Qt.rgba(R/100, G/100,B/100 , 4)});
+                                              "color":Qt.rgba(r/100, g/100,b/100 , 4)});
 
 
     node.x = xPosition;
     node.y = yPosition;
     cobra.push(node);
 }
+
+function adicionarCabeca(Campo,xPosition , yPosition){
+    updateColor();
+    var component = Qt.createComponent("/Qml/Cabeca.qml");
+    var cabeca = component.createObject(Campo, {"x":xPosition,
+                                              "y":yPosition,
+                                              "color":Qt.rgba(r/100, g/100,b/100 , 4)});
+    cobra.push(cabeca);
+}
+
 
 function update(Campo){
     var xPos = cobra[0].x;
@@ -84,11 +150,23 @@ function update(Campo){
 
     for(var i=0 ; i< comidas.length ; i++){
         if(verificaColisao(cobra[0],comidas[i])){
+            cobra[0].state = "COMENDO";
             comeu(i);
             criarComida(Campo);
             crescer(Campo);
             return;
         }
+    }
+
+    if(cobra.length > 5 ){
+        for(var k=1; k< (cobra.length-3); k++){
+            cobra[k].sourceImagem = nodeMeio;
+        }
+
+        cobra[cobra.length-1].sourceImagem = nodeFim1
+        cobra[cobra.length-2].sourceImagem = nodeFim2
+        cobra[cobra.length-3].sourceImagem = nodeFim3
+
     }
 
 }

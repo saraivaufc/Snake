@@ -1,8 +1,8 @@
 var pontos = 0;
 var tempo = new Date(0);
 
-function  inclementaPontos(){
-    pontos +=1;
+function inclementaPontos(){
+    pontos++;
 }
 
 function inclementaTempo(){
@@ -12,7 +12,6 @@ function inclementaTempo(){
 }
 
 function getPontos(){
-    console.log(pontos);
     return pontos.toString();
 }
 

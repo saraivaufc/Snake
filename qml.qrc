@@ -4,15 +4,20 @@
         <file>Node.qml</file>
         <file>Comida.qml</file>
         <file>Pontuacao.qml</file>
+        <file>Cabeca.qml</file>
     </qresource>
-    <qresource lang="JavaScripts" prefix="/Js">
+    <qresource prefix="/Js" lang="JavaScripts">
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
         <file>GerenciadorPontuacao.js</file>
     </qresource>
-    <qresource lang="Imagens" prefix="/Img">
+    <qresource prefix="/Img" lang="Imagens">
         <file>background.jpg</file>
         <file>gameover.jpg</file>
         <file>sair.png</file>
+        <file>node.png</file>
+        <file>nodeFim1.png</file>
+        <file>nodeFim2.png</file>
+        <file>nodeFim3.png</file>
     </qresource>
 </RCC>
