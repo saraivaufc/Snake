@@ -24,6 +24,8 @@ ApplicationWindow {
 
 
         signal gameOver();
+        signal cobraComeu();
+
 
         Image {
             id: background
@@ -65,6 +67,10 @@ ApplicationWindow {
             updateSnake.stop();
             GCobra.destroy();
             gameover.visible = true;
+        }
+
+        onCobraComeu: {
+            pontuacao.inclementaPontuacao();
         }
 
         Pontuacao{

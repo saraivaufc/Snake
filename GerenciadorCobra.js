@@ -61,7 +61,6 @@ function updateColor() {
         if(e2) {
             r += (100 - increment)
             if(r % 100 <= 0) {
-                console.log("r == 0!")
                 r = 0
                 e2 = false
                 e3 = true
@@ -124,7 +123,7 @@ function adicionarCabeca(Campo,xPosition , yPosition){
     var component = Qt.createComponent("/Qml/Cabeca.qml");
     var cabeca = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
-                                              "color":Qt.rgba(r/100, g/100,b/100 , 4)});
+                                              "z":1000000});
     cobra.push(cabeca);
 }
 
@@ -150,10 +149,12 @@ function update(Campo){
 
     for(var i=0 ; i< comidas.length ; i++){
         if(verificaColisao(cobra[0],comidas[i])){
+            Campo.cobraComeu();
             cobra[0].state = "COMENDO";
             comeu(i);
             criarComida(Campo);
             crescer(Campo);
+            aumentarNodos();
             return;
         }
     }
@@ -179,6 +180,14 @@ function moveNodes(){
     }
 }
 
+
+function aumentarNodos(){
+    var timer = 1;
+    for(var i =1 ; i< cobra.length; i++){
+        cobra[i].aumentar(timer);
+        timer +=20;
+    }
+}
 
 function rotate(A, B){
     var catOp = B.y - A.y;

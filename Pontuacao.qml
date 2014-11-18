@@ -85,4 +85,8 @@ Rectangle {
         height: 3
         color: "#240404"
     }
+
+    function inclementaPontuacao(){
+        GPontuacao.inclementaPontos();
+    }
 }

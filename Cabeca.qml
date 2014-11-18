@@ -4,7 +4,7 @@ Rectangle {
     id: node
     width: 20
     height: 20
-    visible: true
+    color:"transparent";
     antialiasing: true
     state: "NORMAL"
 
@@ -19,11 +19,11 @@ Rectangle {
     states: [
         State {
             name: "NORMAL"
-            PropertyChanges{target: cabeca; color: "green"}
+            PropertyChanges{target: cabeca; width: 50; height:50}
         },
         State {
             name: "COMENDO"
-            PropertyChanges{target: cabeca; color: "red"}
+            PropertyChanges{target: cabeca; width:60; height:60}
         }
     ]
 
@@ -33,7 +33,7 @@ Rectangle {
         reversible: true
             NumberAnimation {
                 target: cabeca
-                properties: "color"
+                properties: "width, height"
                 duration: 1000;
             }
             onRunningChanged: {
@@ -43,11 +43,18 @@ Rectangle {
         }
 
 
-    Rectangle {
+    AnimatedSprite {
         id: cabeca
         anchors.centerIn: parent
         width: 40
         height: 40
+        rotation: -90
+        source: "/Img/cabeca.png"
+        frameWidth: 50
+        frameHeight: 50
+        frameCount: 50
+        frameRate: 10
+
 
     }
 
