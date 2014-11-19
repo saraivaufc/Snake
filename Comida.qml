@@ -2,23 +2,30 @@ import QtQuick 2.0
 
 Rectangle {
     id:comida
-    width: 20
-    height: 20
+    width: 40
+    height: 40
     color: "transparent"
     property var dir: ">";
 
-    Image {
-        id: imagemComida
-        anchors.fill: parent
-        source: "/Img/rato.png"
+    Rectangle{
+        width: parent.width/2
+        height: parent.height/2
+        color: "transparent"
+        Image {
+            id: imagemComida
+            anchors.fill: parent
+            source: "/Img/rato.png"
+        }
     }
+
+
 
 
     Behavior on x {
-        NumberAnimation{ duration: 100; easing.type: Easing.Linear}
+        NumberAnimation{ duration: 1000; easing.type: Easing.Linear}
     }
     Behavior on y {
-        NumberAnimation{ duration: 100; easing.type: Easing.Linear}
+        NumberAnimation{ duration: 1000; easing.type: Easing.Linear}
     }
 
     Timer {

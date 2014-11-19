@@ -34,25 +34,11 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    adiciona(Campo,0,0);
-    adiciona(Campo,0,0);
-    adiciona(Campo,0,0);
-
-
-
-    criarComida(Campo);
-
-    criarComida(Campo);
-
-    criarComida(Campo);
-    for(var i=10 ; i>=1;i--){
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
-
-    criarComida(Campo);
     calcSpeed(cobra[0]);
 }
-
 
 function updateColor() {
     var increment = 1;

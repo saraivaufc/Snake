@@ -10,8 +10,7 @@ ApplicationWindow {
     height: 480
     visible: true
     color: "black"
-
-   visibility: "FullScreen";
+    visibility: "FullScreen";
 
 
     Rectangle{
@@ -46,13 +45,21 @@ ApplicationWindow {
             }
         }
 
+        Timer{
+            id:criarComida
+            interval: 3000
+            repeat: true
+            running: true
+            onTriggered: {
+                GCobra.criarComida(campo);
+            }
+
+        }
+
         MouseArea{
             id:mouseAreaCampo;
             anchors.fill: parent;
-            onMouseXChanged: {
-                GCobra.setPosicao(mouse.x, mouse.y);
-            }
-            onMouseYChanged: {
+            onPositionChanged: {
                 GCobra.setPosicao(mouse.x, mouse.y);
             }
 
@@ -65,9 +72,6 @@ ApplicationWindow {
         Component.onCompleted: {
             GCobra.startGame(campo);
         }
-
-
-
 
         onGameOver: {
             updateSnake.stop();
