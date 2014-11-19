@@ -151,6 +151,12 @@ function update(Campo){
             aumentarNodos();
             return;
         }
+        for(var k=1; k< cobra.length;k++){
+            if(verificaColisao(cobra[k],comidas[i])){
+                console.log("Comida Baeu Calda Cobra");
+                return;
+            }
+        }
     }
 
     if(cobra.length > 5 ){
