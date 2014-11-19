@@ -11,7 +11,7 @@ ApplicationWindow {
     visible: true
     color: "black"
 
-   // visibility: "FullScreen";
+   visibility: "FullScreen";
 
 
     Rectangle{
@@ -24,6 +24,8 @@ ApplicationWindow {
 
         signal gameOver();
         signal cobraComeu();
+        signal calPosComida();
+        signal updateComida();
 
 
         Image {
@@ -41,26 +43,6 @@ ApplicationWindow {
             running: true;
             onTriggered: {
                GCobra.update(campo);
-            }
-        }
-
-        Timer {
-            id: calculaPosicaoComida
-            interval: 1000;
-            repeat: true;
-            running: true;
-            onTriggered: {
-                GCobra.calculaPosicaoComida();
-            }
-        }
-
-        Timer {
-            id:timerUpdateComida
-            interval: 1000/30;
-            repeat: true;
-            running: true;
-            onTriggered: {
-                GCobra.atualizaComida();
             }
         }
 
@@ -86,6 +68,7 @@ ApplicationWindow {
 
 
 
+
         onGameOver: {
             updateSnake.stop();
             GCobra.destroy();
@@ -94,6 +77,14 @@ ApplicationWindow {
 
         onCobraComeu: {
             pontuacao.inclementaPontuacao();
+        }
+
+        onCalPosComida: {
+            GCobra.calculaPosicaoComida();
+        }
+
+        onUpdateComida: {
+            GCobra.atualizaComida();
         }
 
 

@@ -1,7 +1,6 @@
 Qt.include("/Js/Funcoes.js");
 
 var comidas = [];
-var dir = ">";
 
 function criarComida(Campo) {
     var comida = Qt.createComponent("/Qml/Comida.qml");
@@ -23,15 +22,25 @@ function comeu(index){
 
 
 function calcProxPos(){
-    var pos = parseInt(Math.random() * 4);
-    if(pos === 0){
-        dir = "<";
-    }else if(pos === 1){
-        dir = ">";
-    }else if(pos === 2){
-        dir = "A";
-    }else{
-        dir = "V";
+    for(var i = 0 ; i< comidas.length ; i++){
+        var pos = parseInt(Math.random() * 8);
+        if(pos === 0){
+            comidas[i].dir = "<";
+        }else if(pos === 1){
+            comidas[i].dir = ">";
+        }else if(pos === 2){
+            comidas[i].dir = "A";
+        }else if(pos === 3){
+            comidas[i].dir = "V";
+        }else if(pos === 4){
+            comidas[i].dir = "a";
+        }else if(pos === 5){
+            comidas[i].dir = "b";
+        }else if(pos === 6){
+            comidas[i].dir = "c";
+        }else if(pos === 7){
+            comidas[i].dir = "d";
+        }
     }
 
     console.log(pos);
@@ -40,14 +49,26 @@ function calcProxPos(){
 function updateComida(){
 
     for(var i = 0 ; i< comidas.length; i++){
-        if(dir === ">"){
-            comidas[i].x+=5;
-        }else if(dir === "<"){
-            comidas[i].x-=5;
-        }else if(dir === "A"){
-            comidas[i].y-=5;
-        }else{
-            comidas[i].y+=5;
+        if(comidas[i].dir === ">"){
+            comidas[i].x+=20;
+        }else if(comidas[i].dir === "<"){
+            comidas[i].x-=20;
+        }else if(comidas[i].dir === "A"){
+            comidas[i].y-=20;
+        }else if(comidas[i].dir === "V"){
+            comidas[i].y+=20;
+        }else if(comidas[i].dir === "a"){
+            comidas[i].x-=20;
+            comidas[i].y-=20;
+        }else if(comidas[i].dir === "b"){
+            comidas[i].x+=20;
+            comidas[i].y-=20;
+        }else if(comidas[i].dir === "c"){
+            comidas[i].x-=20;
+            comidas[i].y+=20;
+        }else if(comidas[i].dir === "d"){
+            comidas[i].x+=20;
+            comidas[i].y+=20;
         }
     }
 }

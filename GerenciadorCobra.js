@@ -44,9 +44,12 @@ function startGame(Campo){
 
     criarComida(Campo);
 
+    criarComida(Campo);
     for(var i=10 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
+
+    criarComida(Campo);
     calcSpeed(cobra[0]);
 }
 
