@@ -34,7 +34,7 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    for(var i=10 ; i>=1;i--){
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
@@ -130,11 +130,11 @@ function update(Campo){
         rotate(cobra[k], cobra[k-1]);
     }
     rotate(cobra[0], cobra[1]);
-    moveNodes();
+    moveNodes(xPos, yPos);
     if((cobra[0].x >= Campo.width || cobra[0].x <= 0) || (cobra[0].y >= Campo.height || cobra[0].y <= 0) ){
         gameOver(Campo);
     }
-    for(var i = 4 ; i < cobra.length;i++){
+    for(var i = 5 ; i < cobra.length;i++){
         if(verificaColisao(cobra[0], cobra[i])){
             gameOver(Campo);
         }
@@ -160,9 +160,11 @@ function update(Campo){
 
 }
 
-function moveNodes(){
+function moveNodes(x, y){
 
-    for(var i = 1; i < cobra.length ; i++){
+    cobra[1].x = x;
+    cobra[1].y = y;
+    for(var i = 2; i < cobra.length ; i++){
         cobra[i].x = cobra[i-1].x;
         cobra[i].y = cobra[i-1].y;
     }
@@ -237,10 +239,13 @@ function updateRabo(){
         var color3 = cobra[cobra.length-3].color;
 
         cobra[cobra.length-1].sourceImagem = nodeFim1;
+        cobra[cobra.length-1].color = "transparent";
 
         cobra[cobra.length-2].sourceImagem = nodeFim2;
+        cobra[cobra.length-2].color = "transparent";
 
         cobra[cobra.length-3].sourceImagem = nodeFim3;
+        cobra[cobra.length-3].color = "transparent";
 
     }
 }

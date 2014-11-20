@@ -27,6 +27,9 @@ Rectangle {
         }
     ]
 
+    Behavior on x { NumberAnimation{ duration:100; easing.type: Easing.OutBounce } }
+    Behavior on y { NumberAnimation { duration:100; easing.type: Easing.OutBounce } }
+
 
     transitions:
         Transition {
