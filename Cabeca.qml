@@ -19,11 +19,11 @@ Rectangle {
     states: [
         State {
             name: "NORMAL"
-            PropertyChanges{target: cabeca; width: 50; height:50}
+            PropertyChanges{target: cabeca; width: 40; height:40}
         },
         State {
             name: "COMENDO"
-            PropertyChanges{target: cabeca; width:70; height:70}
+            PropertyChanges{target: cabeca; width:50; height:50}
         }
     ]
 

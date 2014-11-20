@@ -77,6 +77,7 @@ ApplicationWindow {
             updateSnake.stop();
             GCobra.destroy();
             gameover.visible = true;
+            console.log("Game Over slot");
         }
 
         onCobraComeu: {

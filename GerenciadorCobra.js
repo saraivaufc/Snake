@@ -34,7 +34,7 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    for(var i=50 ; i>=1;i--){
+    for(var i=10 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
@@ -137,7 +137,6 @@ function update(Campo){
     for(var i = 4 ; i < cobra.length;i++){
         if(verificaColisao(cobra[0], cobra[i])){
             gameOver(Campo);
-            return;
         }
     }
 
@@ -149,36 +148,15 @@ function update(Campo){
             criarComida(Campo);
             crescer(Campo);
             aumentarNodos();
-            return;
         }
         for(var k=1; k< cobra.length;k++){
             if(verificaColisao(cobra[k],comidas[i])){
                 console.log("Comida Baeu Calda Cobra");
-                return;
             }
         }
     }
 
-    if(cobra.length > 5 ){
-        for(var k=1; k< (cobra.length-3); k++){
-            cobra[k].sourceImagem = nodeMeio;
-        }
-
-        var color1 = cobra[cobra.length-1].color;
-        var color2 = cobra[cobra.length-2].color;
-        var color3 = cobra[cobra.length-3].color;
-
-        cobra[cobra.length-1].sourceImagem = nodeFim1
-        cobra[cobra.length-1].color = "transparent";
-
-
-        cobra[cobra.length-2].sourceImagem = nodeFim2
-        cobra[cobra.length-2].color = "transparent";
-
-        cobra[cobra.length-3].sourceImagem = nodeFim3
-        cobra[cobra.length-3].color = "transparent";
-
-    }
+    updateRabo();
 
 }
 
@@ -245,4 +223,24 @@ function calculaPosicaoComida(){
 
 function atualizaComida(){
     updateComida();
+}
+
+
+function updateRabo(){
+    if(cobra.length > 5 ){
+        for(var k=1; k< (cobra.length-3); k++){
+            cobra[k].sourceImagem = nodeMeio;
+        }
+
+        var color1 = cobra[cobra.length-1].color;
+        var color2 = cobra[cobra.length-2].color;
+        var color3 = cobra[cobra.length-3].color;
+
+        cobra[cobra.length-1].sourceImagem = nodeFim1;
+
+        cobra[cobra.length-2].sourceImagem = nodeFim2;
+
+        cobra[cobra.length-3].sourceImagem = nodeFim3;
+
+    }
 }
