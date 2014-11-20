@@ -32,7 +32,7 @@ ApplicationWindow {
             width: parent.width
             height: parent.height
             anchors.centerIn: parent
-            source: "/Img/background.jpg"
+            source: "/Img/Imagens/background.jpg"
         }
 
         Timer {
@@ -102,7 +102,7 @@ ApplicationWindow {
         width: parent.width
         height:parent.height
         visible: false;
-        source: "/Img/gameover.jpg"
+        source: "/Img/Imagens/gameover.jpg"
 
         Rectangle{
             id: sair
@@ -133,7 +133,7 @@ ApplicationWindow {
                 width: parent.width
                 height: parent.height
                 anchors.fill: parent
-                source: "/Img/sair.png"
+                source: "/Img/Imagens/sair.png"
             }
 
             MouseArea{

@@ -13,14 +13,14 @@
         <file>Funcoes.js</file>
     </qresource>
     <qresource lang="Imagens" prefix="/Img">
-        <file>background.jpg</file>
-        <file>gameover.jpg</file>
-        <file>sair.png</file>
-        <file>node.png</file>
-        <file>nodeFim1.png</file>
-        <file>nodeFim2.png</file>
-        <file>nodeFim3.png</file>
-        <file>cabeca.png</file>
-        <file>rato.png</file>
+        <file>Imagens/background.jpg</file>
+        <file>Imagens/cabeca.png</file>
+        <file>Imagens/gameover.jpg</file>
+        <file>Imagens/node.png</file>
+        <file>Imagens/nodeFim1.png</file>
+        <file>Imagens/nodeFim2.png</file>
+        <file>Imagens/nodeFim3.png</file>
+        <file>Imagens/rato.png</file>
+        <file>Imagens/sair.png</file>
     </qresource>
 </RCC>

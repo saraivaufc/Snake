@@ -13,10 +13,10 @@ var distanciaY = 0;
 
 
 //SOURCERS IMAGENS
-var nodeMeio = "/Img/node.png";
-var nodeFim1 = "/Img/nodeFim1.png";
-var nodeFim2 = "/Img/nodeFim2.png";
-var nodeFim3 = "/Img/nodeFim3.png";
+var nodeMeio = "/Img/Imagens/node.png";
+var nodeFim1 = "/Img/Imagens/nodeFim1.png";
+var nodeFim2 = "/Img/Imagens/nodeFim2.png";
+var nodeFim3 = "/Img/Imagens/nodeFim3.png";
 
 //COLORS
 var r = 99;

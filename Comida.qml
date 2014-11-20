@@ -14,7 +14,7 @@ Rectangle {
         Image {
             id: imagemComida
             anchors.fill: parent
-            source: "/Img/rato.png"
+            source: "/Img/Imagens/rato.png"
         }
     }
 

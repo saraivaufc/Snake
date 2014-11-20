@@ -9,7 +9,7 @@ Rectangle {
     antialiasing: true
     state: "NORMAL";
 
-    property var sourceImagem : "/Img/node.png";
+    property var sourceImagem : "/Img/Imagens/node.png";
     property int timerCrescer;
 
 

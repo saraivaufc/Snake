@@ -49,7 +49,7 @@ Rectangle {
         width: 40
         height: 40
         rotation: -90
-        source: "/Img/cabeca.png"
+        source: "/Img/Imagens/cabeca.png"
         frameWidth: 50
         frameHeight: 50
         frameCount: 50
