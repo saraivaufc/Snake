@@ -22,10 +22,10 @@ Rectangle {
 
 
     Behavior on x {
-        NumberAnimation{ duration: 1000; easing.type: Easing.Linear}
+        NumberAnimation{ duration: 100; easing.type: Easing.Linear}
     }
     Behavior on y {
-        NumberAnimation{ duration: 1000; easing.type: Easing.Linear}
+        NumberAnimation{ duration: 100; easing.type: Easing.Linear}
     }
 
     Timer {
@@ -40,7 +40,7 @@ Rectangle {
 
     Timer {
         id:timerUpdateComida
-        interval: 1000;
+        interval: 100;
         repeat: true;
         running: true;
         onTriggered: {
