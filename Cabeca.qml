@@ -8,6 +8,8 @@ Rectangle {
     antialiasing: true
     state: "NORMAL"
 
+    //testando commit
+
     Timer{
         id: comendo
         interval: 1000
