@@ -229,23 +229,11 @@ function atualizaComida(){
 
 
 function updateRabo(){
-    if(cobra.length > 5 ){
-        for(var k=1; k< (cobra.length-3); k++){
-            cobra[k].sourceImagem = nodeMeio;
+    if(cobra.length > 3){
+        for(var i = 1; i<cobra.length-1; i++){
+             cobra[i].sourceImagem = "/Img/Imagens/node.png"
         }
 
-        var color1 = cobra[cobra.length-1].color;
-        var color2 = cobra[cobra.length-2].color;
-        var color3 = cobra[cobra.length-3].color;
-
-        cobra[cobra.length-1].sourceImagem = nodeFim1;
-        cobra[cobra.length-1].color = "transparent";
-
-        cobra[cobra.length-2].sourceImagem = nodeFim2;
-        cobra[cobra.length-2].color = "transparent";
-
-        cobra[cobra.length-3].sourceImagem = nodeFim3;
-        cobra[cobra.length-3].color = "transparent";
-
+        cobra[cobra.length-1].sourceImagem = "/Img/Imagens/rabo.png";
     }
 }

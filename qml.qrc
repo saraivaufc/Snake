@@ -6,21 +6,19 @@
         <file>Pontuacao.qml</file>
         <file>Cabeca.qml</file>
     </qresource>
-    <qresource lang="JavaScripts" prefix="/Js">
+    <qresource prefix="/Js" lang="JavaScripts">
         <file>GerenciadorCobra.js</file>
         <file>GerenciadorComida.js</file>
         <file>GerenciadorPontuacao.js</file>
         <file>Funcoes.js</file>
     </qresource>
-    <qresource lang="Imagens" prefix="/Img">
+    <qresource prefix="/Img" lang="Imagens">
         <file>Imagens/background.jpg</file>
         <file>Imagens/cabeca.png</file>
         <file>Imagens/gameover.jpg</file>
         <file>Imagens/node.png</file>
-        <file>Imagens/nodeFim1.png</file>
-        <file>Imagens/nodeFim2.png</file>
-        <file>Imagens/nodeFim3.png</file>
         <file>Imagens/rato.png</file>
         <file>Imagens/sair.png</file>
+        <file>Imagens/rabo.png</file>
     </qresource>
 </RCC>
