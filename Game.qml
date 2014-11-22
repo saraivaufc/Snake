@@ -1,5 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
+import QtMultimedia 5.0
 
 import "/Js/GerenciadorCobra.js" as GCobra
 
@@ -34,6 +35,14 @@ ApplicationWindow {
             anchors.centerIn: parent
             source: "/Img/Imagens/background.jpg"
         }
+
+
+        Audio{
+            id: audioGameOver
+            source: "/Aud/Sons/Bateu.wav";
+            autoLoad: true
+        }
+
 
         Timer {
             id: updateSnake;
@@ -78,7 +87,7 @@ ApplicationWindow {
             updateSnake.stop();
             GCobra.destroy();
             gameover.visible = true;
-            console.log("Game Over slot");
+            audioGameOver.play();
         }
 
         onCobraComeu: {

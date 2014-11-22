@@ -23,7 +23,9 @@ Rectangle {
 
 
     Audio{
-
+        id: audioMorreu
+        source: "/Aud/Sons/Comeu.wav";
+        autoLoad: true
     }
 
 
@@ -94,6 +96,7 @@ Rectangle {
         onTriggered: {
             comida.state="NORMAL";
             sourceImagem = "/Img/Imagens/ratoMorto.png";
+            audioMorreu.play();
         }
     }
 
