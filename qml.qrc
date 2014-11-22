@@ -20,5 +20,6 @@
         <file>Imagens/rato.png</file>
         <file>Imagens/sair.png</file>
         <file>Imagens/rabo.png</file>
+        <file>Imagens/ratoMorto.png</file>
     </qresource>
 </RCC>

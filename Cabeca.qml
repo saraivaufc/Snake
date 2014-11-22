@@ -8,7 +8,18 @@ Rectangle {
     antialiasing: true
     state: "NORMAL"
 
-    //testando commit
+
+    signal updatePosition(real positionX, real positionY);
+
+    Timer{
+        id: timerCobrinha
+        running: true
+        interval: 30
+        repeat: true
+        onTriggered: {
+
+        }
+    }
 
     Timer{
         id: comendo
@@ -29,8 +40,8 @@ Rectangle {
         }
     ]
 
-    Behavior on x { NumberAnimation{ duration:100; easing.type: Easing.OutBounce } }
-    Behavior on y { NumberAnimation { duration:100; easing.type: Easing.OutBounce } }
+    Behavior on x { NumberAnimation{ duration:50; easing.type: Easing.Linear } }
+    Behavior on y { NumberAnimation { duration:50; easing.type: Easing.Linear } }
 
 
     transitions:
@@ -59,30 +70,12 @@ Rectangle {
         frameHeight: 50
         frameCount: 50
         frameRate: 10
-
-
     }
 
 
-    signal updatePosition(real positionX, real positionY);
-
-    Behavior on x { NumberAnimation{ duration:100; easing.type: Easing.OutBounce; } }
-    Behavior on y { NumberAnimation { duration:100; easing.type: Easing.OutBounce } }
 
     onUpdatePosition:{
         x = positionX - (width/2)
         y = positionY - (height/2)
     }
-
-    Timer{
-        id: timerCobrinha
-        running: true
-        interval: 30
-        repeat: true
-        onTriggered: {
-
-        }
-    }
-
-
 }

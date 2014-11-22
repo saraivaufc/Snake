@@ -1,6 +1,7 @@
 Qt.include("/Js/Funcoes.js");
 
 var comidas = [];
+var comidasMortas = [];
 
 function criarComida(Campo) {
     var comida = Qt.createComponent("/Qml/Comida.qml");

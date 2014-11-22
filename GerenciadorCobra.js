@@ -90,12 +90,9 @@ function updateColor() {
                 e1 = true
             }
         }
-
         r %= 100
         g %= 100
         b %= 100
-
-        //console.log(r+ " : " +g + " : " +b)
     }
 }
 
@@ -125,37 +122,14 @@ function adicionarCabeca(Campo,xPosition , yPosition){
 function update(Campo){
     var xPos = cobra[0].x;
     var yPos = cobra[0].y;
-    move();
-    for(var k = 1; k < cobra.length; k++){
-        rotate(cobra[k], cobra[k-1]);
-    }
-    rotate(cobra[0], cobra[1]);
+
+    moveCabeca();
+    rotacionaNodos(Campo);
     moveNodes(xPos, yPos);
-    if((cobra[0].x >= Campo.width || cobra[0].x <= 0) || (cobra[0].y >= Campo.height || cobra[0].y <= 0) ){
-        gameOver(Campo);
-    }
-    for(var i = 5 ; i < cobra.length;i++){
-        if(verificaColisao(cobra[0], cobra[i])){
-            gameOver(Campo);
-        }
-    }
-
-    for(var i=0 ; i< comidas.length ; i++){
-        if(verificaColisao(cobra[0],comidas[i])){
-            Campo.cobraComeu();
-            cobra[0].state = "COMENDO";
-            comeu(i);
-            criarComida(Campo);
-            crescer(Campo);
-            aumentarNodos();
-        }
-        for(var k=1; k< cobra.length;k++){
-            if(verificaColisao(cobra[k],comidas[i])){
-                console.log("Comida Baeu Calda Cobra");
-            }
-        }
-    }
-
+    verificaColisaoCobraParede(Campo);
+    verificaColisaoCobraCobra(Campo);
+    verificaColisaoCabecaComida(Campo);
+    verificaColisaoComidaNodes(Campo);
     updateRabo();
 
 }
@@ -187,7 +161,7 @@ function calcSpeed(node){
     distanciaY = (distanciaDefault * DY)/D;
 }
 
-function move(){
+function moveCabeca(){
     if(cobra.length <= 0){
         console.log("Cobra vazia!!");
         return;
@@ -235,5 +209,55 @@ function updateRabo(){
         }
 
         cobra[cobra.length-1].sourceImagem = "/Img/Imagens/rabo.png";
+    }
+}
+
+function rotacionaNodos(Campo){
+    for(var k = 1; k < cobra.length; k++){
+        rotate(cobra[k], cobra[k-1]);
+    }
+    rotate(cobra[0], cobra[1]);
+}
+
+function verificaColisaoCobraParede(Campo){
+    if((cobra[0].x >= Campo.width || cobra[0].x <= 0) || (cobra[0].y >= Campo.height || cobra[0].y <= 0) ){
+        gameOver(Campo);
+    }
+}
+
+function verificaColisaoCobraCobra(Campo){
+    for(var i = 4 ; i < cobra.length;i++){
+        if(verificaColisao(cobra[0], cobra[i])){
+            gameOver(Campo);
+        }
+    }
+}
+
+function verificaColisaoCabecaComida(Campo){
+    for(var i=0 ; i< comidas.length ; i++){
+        if(verificaColisao(cobra[0],comidas[i])){
+            Campo.cobraComeu();
+            cobra[0].state = "COMENDO";
+            comeu(i);
+            crescer(Campo);
+            aumentarNodos();
+        }
+    }
+    for(var i=0 ; i< comidasMortas.length ; i++){
+        if(verificaColisao(cobra[0],comidasMortas[i])){
+            gameOver(Campo);
+        }
+    }
+}
+
+function verificaColisaoComidaNodes(Campo){
+    for(var i=0; i<comidas.length ; i++){
+        for(var k=1; k< cobra.length;k++){
+            if(verificaColisao(cobra[k],comidas[i])){
+                var x = comidas.splice(i,1);
+                x[0].morreu();
+                comidasMortas.push(x[0]);
+            }
+        }
     }
 }

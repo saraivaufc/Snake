@@ -60,7 +60,7 @@ ApplicationWindow {
             id:mouseAreaCampo;
             anchors.fill: parent;
             hoverEnabled: true
-            onPositionChanged: {
+            onClicked: {
                 GCobra.setPosicao(mouse.x, mouse.y);
             }
 

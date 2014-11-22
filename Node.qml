@@ -15,8 +15,8 @@ Rectangle {
 
     Rectangle{
        id: containerImagem
-       width: 40
-       height: 40
+       width: 20
+       height: 20
        color: parent.color
        anchors.centerIn: parent
        Image {
@@ -33,8 +33,8 @@ Rectangle {
 
     signal updatePosition(real positionX, real positionY);
 
-    Behavior on x { NumberAnimation{ duration:100; easing.type: Easing.OutBounce } }
-    Behavior on y { NumberAnimation { duration:100; easing.type: Easing.OutBounce } }
+    Behavior on x { NumberAnimation{ duration:50; easing.type: Easing.Linear } }
+    Behavior on y { NumberAnimation { duration:50; easing.type: Easing.Linear } }
 
     onUpdatePosition:{
         x = positionX - (width/2)
@@ -47,8 +47,8 @@ Rectangle {
             when: timerAumentar.stop();
             PropertyChanges {
                 target: containerImagem
-                width: 30
-                height:30
+                width: 35
+                height:35
             }
         },
         State {
