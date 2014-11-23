@@ -44,7 +44,6 @@ function calcProxPos(){
         }
     }
 
-    console.log(pos);
 }
 
 function updateComida(){

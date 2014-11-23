@@ -46,12 +46,21 @@ Rectangle {
 
     states: [
         State{
-            name:"CRESCENDO"
-            when: timerAumentar.stop();
+            name:"CRESCENDO1"
+            when: timerAumentar1.stop();
             PropertyChanges {
                 target: containerImagem
                 width: 35
                 height:35
+            }
+        },
+        State{
+            name:"CRESCENDO2"
+            when: timerAumentar2.stop();
+            PropertyChanges {
+                target: containerImagem
+                width: 60
+                height:60
             }
         },
         State {
@@ -86,17 +95,29 @@ Rectangle {
     }
 
     Timer{
-         id:timerAumentar
+         id:timerAumentar1
         interval: timerCrescer
         running: false
         onTriggered: {
-            node.state="CRESCENDO"
+            node.state="CRESCENDO1"
+        }
+    }
+    Timer{
+        id:timerAumentar2
+        interval: timerCrescer
+        running: false
+        onTriggered: {
+            node.state="CRESCENDO2"
         }
     }
 
-    function aumentar(aumento){
+    function aumentar1(aumento){
         timerCrescer = aumento;
-        timerAumentar.running = true;
+        timerAumentar1.running = true;
+    }
+    function aumentar2(aumento){
+        timerCrescer = aumento;
+        timerAumentar2.running = true;
     }
 
 }

@@ -10,8 +10,8 @@ ApplicationWindow {
     width: 800
     height: 500
     visible: true
-    color: "black"
-    //visibility: "FullScreen";
+    color: Qt.rgba(10, 100, 10, 1);
+    visibility: "FullScreen";
 
 
     Rectangle{
@@ -62,7 +62,7 @@ ApplicationWindow {
 
         Timer{
             id:criarComida
-            interval: 3000
+            interval: 300
             repeat: true
             running: true
             onTriggered: {

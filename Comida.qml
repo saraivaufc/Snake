@@ -3,16 +3,17 @@ import QtMultimedia 5.0
 
 Rectangle {
     id:comida
-    width: 40
-    height: 40
-    color: "transparent"
+    width: 20
+    height: 20
+    state: "NORMAL";
+    color: "transparent";
     property var sourceImagem : "/Img/Imagens/rato.png"
     property var dir: ">";
 
     Rectangle{
         id: containerImagem;
-        width: parent.width/2
-        height: parent.height/2
+        width: comida.width
+        height: comida.height
         color: "transparent"
         Image {
             id: imagemComida
@@ -34,8 +35,8 @@ Rectangle {
             name:"MORRENDO"
             PropertyChanges {
                 target: containerImagem
-                width: 50
-                height:50
+                width: 40
+                height:40
             }
         },
         State {
@@ -45,28 +46,53 @@ Rectangle {
                 width: 20;
                 height:20
             }
+        },
+        State {
+            name: "GRANDE"
+            PropertyChanges{
+                target: containerImagem;
+                width: 40;
+                height:40
+            }
         }
 
     ]
 
-    transitions: Transition {
-        NumberAnimation {
-            target: containerImagem;
-            properties: "width, height";
-            duration: 100;
+    transitions:[
+        Transition {
+            from: "NORMAL"; to: "MORRENDO";
+            NumberAnimation {
+                target: containerImagem;
+                properties: "width, height";
+                duration: 100;
+                easing.type: Easing.InOutBounce;
+            }
+            onRunningChanged: {
+                morte.running = true;
+            }
+        },
+        Transition {
+            from: "GRANDE"; to: "MORRENDO";
+            NumberAnimation {
+                target: containerImagem;
+                properties: "width, height";
+                duration: 100;
+                easing.type: Easing.InOutBounce;
+
+            }
+            onRunningChanged: {
+                morte.running = true;
+            }
         }
-        onRunningChanged: {
-            morte.running = true;
-        }
-    }
+    ]
 
 
 
     Behavior on x {
-        NumberAnimation{ duration: 50; easing.type: Easing.Linear}
+        NumberAnimation{ duration: 100; easing.type: Easing.Linear}
     }
     Behavior on y {
-        NumberAnimation{ duration: 50; easing.type: Easing.Linear}
+        NumberAnimation{ duration: 100; easing.type: Easing.Linear}
     }
 
     Timer {

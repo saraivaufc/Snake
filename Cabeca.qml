@@ -46,7 +46,7 @@ Rectangle {
 
     transitions:
         Transition {
-        reversible: true
+        from: "NORMAL"; to: "COMENDO";
             NumberAnimation {
                 target: cabeca
                 properties: "width, height"

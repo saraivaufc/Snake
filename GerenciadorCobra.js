@@ -34,7 +34,7 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    for(var i=10 ; i>=1;i--){
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
@@ -130,6 +130,7 @@ function update(Campo){
     verificaColisaoCobraCobra(Campo);
     verificaColisaoCabecaComida(Campo);
     verificaColisaoComidaNodes(Campo);
+    verificaColisaoComidaComida(Campo);
     updateRabo();
 
 }
@@ -145,10 +146,15 @@ function moveNodes(x, y){
 }
 
 
-function aumentarNodos(){
+function aumentarNodos(tipo){
     var timer = 1;
     for(var i =1 ; i< cobra.length; i++){
-        cobra[i].aumentar(timer);
+        if(tipo === 1){
+            cobra[i].aumentar1(timer);
+        }else if(tipo === 2){
+            cobra[i].aumentar2(timer);
+        }
+
         timer +=20;
     }
 }
@@ -247,8 +253,14 @@ function verificaColisaoCabecaComida(Campo){
             Campo.cobraComeu();
             cobra[0].state = "COMENDO";
             comeu(i);
-            crescer(Campo);
-            aumentarNodos();
+            crescer(Campo, 1);
+            if(comidas[i].state === "GRANDE"){
+                aumentarNodos(2);
+
+            }else{
+                aumentarNodos(1);
+
+            }
         }
     }
     for(var i=0 ; i< comidasMortas.length ; i++){
@@ -263,8 +275,24 @@ function verificaColisaoComidaNodes(Campo){
         for(var k=1; k< cobra.length;k++){
             if(verificaColisao(cobra[k],comidas[i])){
                 var x = comidas.splice(i,1);
+                if(x[0].state === "GRANDE"){
+                    console.log("Rato Grande Bateu na Cobra");
+                    gameOver(Campo);
+                }
+
                 x[0].morreu();
                 comidasMortas.push(x[0]);
+            }
+        }
+    }
+}
+
+function verificaColisaoComidaComida(Campo){
+    for(var i=0 ; i< comidas.length; i++){
+        for(var k=i+1 ; k<comidas.length; k++){
+            if(verificaColisao(comidas[i],comidas[k])){
+                comidas[i].state = "GRANDE";
+                comidas[k].state = "GRANDE";
             }
         }
     }
