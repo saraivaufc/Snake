@@ -7,11 +7,11 @@ import "/Js/GerenciadorCobra.js" as GCobra
 
 ApplicationWindow {
     id:root
-    width: 640
-    height: 480
+    width: 800
+    height: 500
     visible: true
     color: "black"
-    visibility: "FullScreen";
+    //visibility: "FullScreen";
 
 
     Rectangle{
@@ -43,6 +43,12 @@ ApplicationWindow {
             autoLoad: true
         }
 
+        Audio{
+            id:audioComeu
+            source: "/Aud/Sons/Comeu.wav"
+            autoLoad: true
+        }
+
 
         Timer {
             id: updateSnake;
@@ -69,10 +75,9 @@ ApplicationWindow {
             id:mouseAreaCampo;
             anchors.fill: parent;
             hoverEnabled: true
-            onClicked: {
+            onPressed: {
                 GCobra.setPosicao(mouse.x, mouse.y);
             }
-
         }
 
         Pontuacao{
@@ -92,6 +97,7 @@ ApplicationWindow {
 
         onCobraComeu: {
             pontuacao.inclementaPontuacao();
+            audioComeu.play();
         }
 
         onCalPosComida: {

@@ -19,8 +19,10 @@
         <file>Imagens/node.png</file>
         <file>Imagens/rato.png</file>
         <file>Imagens/sair.png</file>
-        <file>Imagens/rabo.png</file>
         <file>Imagens/ratoMorto.png</file>
+        <file>Imagens/nodeFim1.png</file>
+        <file>Imagens/nodeFim2.png</file>
+        <file>Imagens/nodeFim3.png</file>
     </qresource>
     <qresource lang="Sons" prefix="/Aud">
         <file>Sons/Bateu.wav</file>

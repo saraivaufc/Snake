@@ -34,7 +34,7 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    for(var i=50 ; i>=1;i--){
+    for(var i=10 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
@@ -101,7 +101,7 @@ function adiciona(Campo,xPosition , yPosition){
     var component = Qt.createComponent("/Qml/Node.qml");
     var node = component.createObject(Campo, {"x":xPosition,
                                               "y":yPosition,
-                                              "color":Qt.rgba(r/100, g/100,b/100 , 4)});
+                                              "colorNode":Qt.rgba(r/100, g/100,b/100 , 4)});
 
 
     node.x = xPosition;
@@ -203,12 +203,20 @@ function atualizaComida(){
 
 
 function updateRabo(){
-    if(cobra.length > 3){
+    if(cobra.length > 5){
         for(var i = 1; i<cobra.length-1; i++){
              cobra[i].sourceImagem = "/Img/Imagens/node.png"
+             cobra[i].color =  cobra[i].colorNode;
         }
 
-        cobra[cobra.length-1].sourceImagem = "/Img/Imagens/rabo.png";
+        cobra[cobra.length-1].sourceImagem = "/Img/Imagens/nodeFim1.png";
+        cobra[cobra.length-1].color = "transparent";
+
+        cobra[cobra.length-2].sourceImagem = "/Img/Imagens/nodeFim2.png";
+        cobra[cobra.length-2].color = "transparent";
+
+        cobra[cobra.length-3].sourceImagem = "/Img/Imagens/nodeFim3.png";
+        cobra[cobra.length-3].color = "transparent";
     }
 }
 

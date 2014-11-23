@@ -7,9 +7,12 @@ Rectangle {
     height: 20
     visible: true
     antialiasing: true
+    color: colorNode
+
     state: "NORMAL";
 
     property var sourceImagem : "/Img/Imagens/node.png";
+    property var colorNode;
     property int timerCrescer;
 
 
