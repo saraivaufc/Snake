@@ -250,16 +250,17 @@ function verificaColisaoCobraCobra(Campo){
 function verificaColisaoCabecaComida(Campo){
     for(var i=0 ; i< comidas.length ; i++){
         if(verificaColisao(cobra[0],comidas[i])){
-            Campo.cobraComeu();
             cobra[0].state = "COMENDO";
             comeu(i);
             crescer(Campo, 1);
             if(comidas[i].state === "GRANDE"){
                 aumentarNodos(2);
-
+                for(var i=0; i<10; i++){
+                    Campo.cobraComeu();
+                }
             }else{
                 aumentarNodos(1);
-
+                Campo.cobraComeu();
             }
         }
     }
