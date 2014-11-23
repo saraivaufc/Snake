@@ -23,6 +23,7 @@
         <file>Imagens/nodeFim1.png</file>
         <file>Imagens/nodeFim2.png</file>
         <file>Imagens/nodeFim3.png</file>
+        <file>Imagens/aguia.png</file>
     </qresource>
     <qresource lang="Sons" prefix="/Aud">
         <file>Sons/Bateu.wav</file>

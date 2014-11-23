@@ -52,7 +52,7 @@ Rectangle {
             PropertyChanges{
                 target: containerImagem;
                 width: 40;
-                height:40
+                height:40;
             }
         }
 
@@ -82,6 +82,19 @@ Rectangle {
             }
             onRunningChanged: {
                 morte.running = true;
+            }
+        },
+        Transition {
+            from: "NORMAL"; to: "GRANDE";
+            NumberAnimation {
+                target: containerImagem;
+                properties: "width, height";
+                duration: 100;
+                easing.type: Easing.InOutBounce;
+
+            }
+            onRunningChanged: {
+                sourceImagem  = "/Img/Imagens/aguia.png";
             }
         }
     ]

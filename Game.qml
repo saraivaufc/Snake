@@ -62,7 +62,7 @@ ApplicationWindow {
 
         Timer{
             id:criarComida
-            interval: 300
+            interval: 2000
             repeat: true
             running: true
             onTriggered: {
