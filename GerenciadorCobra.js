@@ -34,26 +34,25 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    for(var i=10 ; i>=1;i--){
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
 }
 
 function updateColor() {
-    var increment = 1;
 
     for(var i = 0; i < 10; i++) {
 
         if(e1) {
-            g += increment
-            if(g % 100 >= (100 - increment)) {
+            g++;
+            if(g % 100 >= 99) {
                 e1 = false
                 e2 = true
             }
         }
         if(e2) {
-            r += (100 - increment)
+            r += 99
             if(r % 100 <= 0) {
                 r = 0
                 e2 = false
@@ -61,14 +60,14 @@ function updateColor() {
             }
         }
         if(e3) {
-            b += increment
-            if(b % 100 >= (100 - increment)) {
+            b++;
+            if(b % 100 >= 99) {
                 e3 = false
                 e4 = true
             }
         }
         if(e4) {
-            g += (100-increment)
+            g += 99
             if(g % 100 <= 0) {
                 g = 0
                 e4 = false
@@ -76,14 +75,14 @@ function updateColor() {
             }
         }
         if(e5) {
-            r += increment
-            if(r % 100 >= (100 - increment)) {
+            r++;
+            if(r % 100 >= (99)) {
                 e5 = false
                 e6 = true
             }
         }
         if(e6) {
-            b += (100 - increment)
+            b += 99
             if(b % 100 <= 0){
                 b = 0
                 e6 = false
@@ -211,17 +210,17 @@ function atualizaComida(){
 function updateRabo(){
     if(cobra.length > 5){
         for(var i = 1; i<cobra.length-1; i++){
-             cobra[i].sourceImagem = "/Img/Imagens/node.png"
+             cobra[i].sourceImagem = nodeMeio;
              cobra[i].color =  cobra[i].colorNode;
         }
 
-        cobra[cobra.length-1].sourceImagem = "/Img/Imagens/nodeFim1.png";
+        cobra[cobra.length-1].sourceImagem = nodeFim1;
         cobra[cobra.length-1].color = "transparent";
 
-        cobra[cobra.length-2].sourceImagem = "/Img/Imagens/nodeFim2.png";
+        cobra[cobra.length-2].sourceImagem = nodeFim2;
         cobra[cobra.length-2].color = "transparent";
 
-        cobra[cobra.length-3].sourceImagem = "/Img/Imagens/nodeFim3.png";
+        cobra[cobra.length-3].sourceImagem = nodeFim3;
         cobra[cobra.length-3].color = "transparent";
     }
 }
@@ -251,17 +250,19 @@ function verificaColisaoCabecaComida(Campo){
     for(var i=0 ; i< comidas.length ; i++){
         if(verificaColisao(cobra[0],comidas[i])){
             cobra[0].state = "COMENDO";
-            comeu(i);
-            crescer(Campo, 1);
-            if(comidas[i].state === "GRANDE"){
+            crescer(Campo);
+            if(comidas[i].estado === "GRANDE"){
+                console.log("Cobra Comeu um Gavião!!!");
                 aumentarNodos(2);
-                for(var i=0; i<10; i++){
+                for(var p=0; p<10; p++){
                     Campo.cobraComeu();
                 }
             }else{
+                console.log("Cobra Comeu um Rato!!!");
                 aumentarNodos(1);
                 Campo.cobraComeu();
             }
+            comeu(i);
         }
     }
     for(var i=0 ; i< comidasMortas.length ; i++){
@@ -276,7 +277,7 @@ function verificaColisaoComidaNodes(Campo){
         for(var k=1; k< cobra.length;k++){
             if(verificaColisao(cobra[k],comidas[i])){
                 var x = comidas.splice(i,1);
-                if(x[0].state === "GRANDE"){
+                if(x[0].estado === "GRANDE"){
                     console.log("Rato Grande Bateu na Cobra");
                     gameOver(Campo);
                 }
@@ -292,8 +293,8 @@ function verificaColisaoComidaComida(Campo){
     for(var i=0 ; i< comidas.length; i++){
         for(var k=i+1 ; k<comidas.length; k++){
             if(verificaColisao(comidas[i],comidas[k])){
-                comidas[i].state = "GRANDE";
-                comidas[k].state = "GRANDE";
+                comidas[i].estado = "GRANDE";
+                comidas[k].estado = "GRANDE";
             }
         }
     }

@@ -5,10 +5,13 @@ Rectangle {
     id:comida
     width: 20
     height: 20
-    state: "NORMAL";
+    state: estado;
     color: "transparent";
     property var sourceImagem : "/Img/Imagens/rato.png"
     property var dir: ">";
+    property var  estado: "NORMAL";
+
+    signal morreu();
 
     Rectangle{
         id: containerImagem;
@@ -108,6 +111,20 @@ Rectangle {
         NumberAnimation{ duration: 100; easing.type: Easing.Linear}
     }
 
+
+    AnimatedSprite {
+        id: explosao
+        anchors.centerIn: parent
+        width: 20
+        height: 20
+        visible: false
+        source: "/Img/Imagens/explosao.png"
+        frameWidth: 85
+        frameHeight: 85
+        frameCount: 9
+        frameRate: 9
+    }
+
     Timer {
         id: calculaPosicaoComida
         interval: 1000;
@@ -133,13 +150,14 @@ Rectangle {
         interval: 500
         running: false
         onTriggered: {
-            comida.state="NORMAL";
-            sourceImagem = "/Img/Imagens/ratoMorto.png";
+            comida.estado="NORMAL";
+            explosao.visible = true;
+            containerImagem.visible = false;
             audioMorreu.play();
         }
     }
 
-    function morreu(){
+    onMorreu: {
         comida.state = "MORRENDO";
     }
 }
