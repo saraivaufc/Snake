@@ -3,6 +3,8 @@ Qt.include("/Js/Funcoes.js");
 var comidas = [];
 var comidasMortas = [];
 
+var tamanhoComida = 30;
+
 function criarComida(Campo) {
     var comida = Qt.createComponent("/Qml/Comida.qml");
     var status = comida.createObject(Campo, {"x": Math.random() * Campo.width,
@@ -19,8 +21,6 @@ function comeu(index){
     var element = comidas.splice(index,1);
     element[0].destroy();
 }
-
-
 
 function calcProxPos(){
     for(var i = 0 ; i< comidas.length ; i++){
@@ -50,25 +50,25 @@ function updateComida(){
 
     for(var i = 0 ; i< comidas.length; i++){
         if(comidas[i].dir === ">"){
-            comidas[i].x+=20;
+            comidas[i].x+=tamanhoComida;
         }else if(comidas[i].dir === "<"){
-            comidas[i].x-=20;
+            comidas[i].x-=tamanhoComida;
         }else if(comidas[i].dir === "A"){
-            comidas[i].y-=20;
+            comidas[i].y-=tamanhoComida;
         }else if(comidas[i].dir === "V"){
-            comidas[i].y+=20;
+            comidas[i].y+=tamanhoComida;
         }else if(comidas[i].dir === "a"){
-            comidas[i].x-=20;
-            comidas[i].y-=20;
+            comidas[i].x-=tamanhoComida;
+            comidas[i].y-=tamanhoComida;
         }else if(comidas[i].dir === "b"){
-            comidas[i].x+=20;
-            comidas[i].y-=20;
+            comidas[i].x+=tamanhoComida;
+            comidas[i].y-=tamanhoComida;
         }else if(comidas[i].dir === "c"){
-            comidas[i].x-=20;
-            comidas[i].y+=20;
+            comidas[i].x-=tamanhoComida;
+            comidas[i].y+=tamanhoComida;
         }else if(comidas[i].dir === "d"){
-            comidas[i].x+=20;
-            comidas[i].y+=20;
+            comidas[i].x+=tamanhoComida;
+            comidas[i].y+=tamanhoComida;
         }
     }
 }

@@ -15,16 +15,15 @@
     <qresource prefix="/Img" lang="Imagens">
         <file>Imagens/background.jpg</file>
         <file>Imagens/cabeca.png</file>
-        <file>Imagens/gameover.jpg</file>
         <file>Imagens/node.png</file>
         <file>Imagens/rato.png</file>
         <file>Imagens/sair.png</file>
-        <file>Imagens/ratoMorto.png</file>
         <file>Imagens/nodeFim1.png</file>
         <file>Imagens/nodeFim2.png</file>
         <file>Imagens/nodeFim3.png</file>
         <file>Imagens/aguia.png</file>
         <file>Imagens/explosao.png</file>
+        <file>Imagens/gameover.png</file>
     </qresource>
     <qresource prefix="/Aud" lang="Sons">
         <file>Sons/Bateu.wav</file>

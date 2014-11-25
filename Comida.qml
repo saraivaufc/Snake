@@ -1,10 +1,12 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 
+
+
 Rectangle {
     id:comida
-    width: 20
-    height: 20
+    width: 30
+    height: 30
     state: estado;
     color: "transparent";
     property var sourceImagem : "/Img/Imagens/rato.png"
@@ -13,18 +15,17 @@ Rectangle {
 
     signal morreu();
 
-    Rectangle{
-        id: containerImagem;
-        width: comida.width
-        height: comida.height
-        color: "transparent"
-        Image {
-            id: imagemComida
-            anchors.fill: parent
-            source: sourceImagem;
-        }
+    Rotation{
+        id: rotacaoLeft
+        axis {y:0; x:0 ; z:0}
     }
-
+    Rotation{
+        id: rotacaoRigth
+        origin.x: width/2;
+        origin.y: height/2;
+        axis { x: 0; y: 1; z: 0 }
+        angle: 180
+    }
 
     Audio{
         id: audioMorreu
@@ -37,7 +38,7 @@ Rectangle {
         State{
             name:"MORRENDO"
             PropertyChanges {
-                target: containerImagem
+                target: comida
                 width: 40
                 height:40
             }
@@ -45,15 +46,15 @@ Rectangle {
         State {
             name: "NORMAL"
             PropertyChanges{
-                target: containerImagem;
-                width: 20;
-                height:20
+                target: comida;
+                width: 30;
+                height:30
             }
         },
         State {
             name: "GRANDE"
             PropertyChanges{
-                target: containerImagem;
+                target: comida;
                 width: 40;
                 height:40;
             }
@@ -65,7 +66,7 @@ Rectangle {
         Transition {
             from: "NORMAL"; to: "MORRENDO";
             NumberAnimation {
-                target: containerImagem;
+                target: comida;
                 properties: "width, height";
                 duration: 100;
                 easing.type: Easing.InOutBounce;
@@ -90,14 +91,15 @@ Rectangle {
         Transition {
             from: "NORMAL"; to: "GRANDE";
             NumberAnimation {
-                target: containerImagem;
+                target: comida;
                 properties: "width, height";
                 duration: 100;
                 easing.type: Easing.InOutBounce;
 
             }
             onRunningChanged: {
-                sourceImagem  = "/Img/Imagens/aguia.png";
+                imagemComida.visible = false;
+                aguia.visible = true
             }
         }
     ]
@@ -111,18 +113,51 @@ Rectangle {
         NumberAnimation{ duration: 100; easing.type: Easing.Linear}
     }
 
+    Image {
+        id: imagemComida
+        anchors.fill: parent
+        source: sourceImagem;
+    }
+
+
+    AnimatedSprite{
+        id: aguia
+        width: comida.width
+        height: comida.height
+        anchors.horizontalCenter: comida.horizontalCenter
+        visible: false
+        source: "/Img/Imagens/aguia.png";
+        frameWidth: 40
+        frameHeight: 40
+        frameCount: 8
+        frameRate: 4
+    }
+
 
     AnimatedSprite {
         id: explosao
         anchors.centerIn: parent
-        width: 20
-        height: 20
+        width: comida.width
+        height: comida.height
         visible: false
         source: "/Img/Imagens/explosao.png"
         frameWidth: 85
         frameHeight: 85
         frameCount: 9
         frameRate: 9
+    }
+    Timer {
+        id: updaterRotation
+        interval: 10
+        repeat: true
+        running: true
+        onTriggered: {
+            if(dir === ">" || dir === "b" || dir === "d"){
+                comida.transform = rotacaoRigth;
+            }else if(dir === "<" || dir === "a" || dir === "c"){
+                comida.transform = rotacaoLeft;
+            }
+        }
     }
 
     Timer {
@@ -137,7 +172,7 @@ Rectangle {
 
     Timer {
         id:timerUpdateComida
-        interval: 100;
+        interval: 1000/20;
         repeat: true;
         running: true;
         onTriggered: {
@@ -152,7 +187,7 @@ Rectangle {
         onTriggered: {
             comida.estado="NORMAL";
             explosao.visible = true;
-            containerImagem.visible = false;
+            imagemComida.visible = false;
             audioMorreu.play();
         }
     }

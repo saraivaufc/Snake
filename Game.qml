@@ -90,9 +90,11 @@ ApplicationWindow {
 
         onGameOver: {
             updateSnake.stop();
+            criarComida.stop();
             GCobra.destroy();
             gameover.visible = true;
             audioGameOver.play();
+            pontuacao.parar();
         }
 
         onCobraComeu: {
@@ -117,7 +119,7 @@ ApplicationWindow {
         width: parent.width
         height:parent.height
         visible: false;
-        source: "/Img/Imagens/gameover.jpg"
+        source: "/Img/Imagens/gameover.png"
 
         Rectangle{
             id: sair
@@ -125,7 +127,7 @@ ApplicationWindow {
             height: 100
             smooth: true
             antialiasing: true
-            y : (parent.height/2);
+            y : parent.height - height;
             x : -300
 
             states: State {

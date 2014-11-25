@@ -16,6 +16,8 @@ Rectangle {
     border.width: 4
     z:100;
 
+    signal parar();
+
     property int segundos: 0 ;
 
     Timer{
@@ -96,5 +98,10 @@ Rectangle {
 
     function inclementaPontuacao(){
         GPontuacao.inclementaPontos();
+    }
+
+    onParar: {
+        timeTempo.stop();
+        timePontos.stop();
     }
 }
