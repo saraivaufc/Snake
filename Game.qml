@@ -123,17 +123,17 @@ ApplicationWindow {
 
         Rectangle{
             id: sair
-            width: 200
+            width: 100
             height: 100
             smooth: true
-            antialiasing: true
-            y : parent.height - height;
-            x : -300
+            color: "transparent"
+            y : (parent.height - imagemSair.height)-10 ;
+            x : 10
 
             states: State {
                 name: "VISIVEL";
                 when: sair.visible === true
-                PropertyChanges {target: sair; x: (parent.width/2)}
+                PropertyChanges {target: sair}
             }
 
             transitions:
