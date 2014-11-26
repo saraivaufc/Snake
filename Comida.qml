@@ -4,8 +4,8 @@ import QtQuick 2.0
 
 Rectangle {
     id:comida
-    width: 20
-    height: 20
+    width: 30
+    height: 30
     state: estado;
     color: "transparent";
     property var sourceImagem : "/Img/Imagens/rato.png"
@@ -32,24 +32,24 @@ Rectangle {
             name:"MORRENDO"
             PropertyChanges {
                 target: comida
-                width: 30
-                height:30
+                width: 40
+                height:40
             }
         },
         State {
             name: "NORMAL"
             PropertyChanges{
                 target: comida;
-                width: 20;
-                height:20
+                width: 30;
+                height:30
             }
         },
         State {
             name: "GRANDE"
             PropertyChanges{
                 target: comida;
-                width: 30;
-                height:30;
+                width: 40;
+                height:40;
             }
         }
 

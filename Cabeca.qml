@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Rectangle {
     id: node
-    width: 10
-    height: 10
+    width: 20
+    height: 20
     color:"transparent";
     antialiasing: true
     state: "NORMAL"
@@ -32,11 +32,11 @@ Rectangle {
     states: [
         State {
             name: "NORMAL"
-            PropertyChanges{target: cabeca; width: 30; height:30}
+            PropertyChanges{target: cabeca; width: 40; height:40}
         },
         State {
             name: "COMENDO"
-            PropertyChanges{target: cabeca; width:40; height:40}
+            PropertyChanges{target: cabeca; width:50; height:50}
         }
     ]
 
@@ -62,8 +62,8 @@ Rectangle {
     AnimatedSprite {
         id: cabeca
         anchors.centerIn: parent
-        width: 30
-        height: 30
+        width: 40
+        height: 40
         rotation: -90
         source: "/Img/Imagens/cabeca.png"
         frameWidth: 50

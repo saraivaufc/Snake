@@ -6,7 +6,7 @@ var mousePositionX = 1000;
 var mousePositionY = 1000;
 
 //DEFINE DOS MOVIMENTOS
-var distanciaDefault = 10;
+var distanciaDefault = 20;
 var distanciaX = 0;
 var distanciaY = 0;
 
