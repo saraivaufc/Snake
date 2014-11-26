@@ -34,7 +34,7 @@ var e6 = false;
 function startGame(Campo){
 
     adicionarCabeca(Campo, Campo.width/4,Campo.height/4);
-    for(var i=5 ; i>=1;i--){
+    for(var i=50 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);

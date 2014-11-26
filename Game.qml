@@ -1,16 +1,16 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
+import QtQuick.Window 2.0
 
 import "/Js/GerenciadorCobra.js" as GCobra
 
 
 ApplicationWindow {
     id:root
-    width: 320
-    height: 480
+    width: Screen.width
+    height: Screen.height
     visible: true
-    color: Qt.rgba(10, 100, 10, 1);
-    //visibility: "FullScreen";
+    color: "black";
 
 
     Rectangle{
