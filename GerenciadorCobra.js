@@ -6,7 +6,7 @@ var mousePositionX = 1000;
 var mousePositionY = 1000;
 
 //DEFINE DOS MOVIMENTOS
-var distanciaDefault = 20;
+var distanciaDefault = 10;
 var distanciaX = 0;
 var distanciaY = 0;
 
@@ -33,8 +33,8 @@ var e6 = false;
 
 function startGame(Campo){
 
-    adicionarCabeca(Campo, Campo.width/2,Campo.height/2);
-    for(var i=10 ; i>=1;i--){
+    adicionarCabeca(Campo, Campo.width/4,Campo.height/4);
+    for(var i=5 ; i>=1;i--){
         adiciona(Campo,0,0);
     }
     calcSpeed(cobra[0]);
@@ -42,7 +42,7 @@ function startGame(Campo){
 
 function updateColor() {
 
-    for(var i = 0; i < 10; i++) {
+    for(var i = 0; i < 5; i++) {
 
         if(e1) {
             g++;

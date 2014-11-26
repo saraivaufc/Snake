@@ -1,17 +1,16 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
-import QtMultimedia 5.0
 
 import "/Js/GerenciadorCobra.js" as GCobra
 
 
 ApplicationWindow {
     id:root
-    width: 800
-    height: 500
+    width: 320
+    height: 480
     visible: true
     color: Qt.rgba(10, 100, 10, 1);
-    visibility: "FullScreen";
+    //visibility: "FullScreen";
 
 
     Rectangle{
@@ -34,19 +33,6 @@ ApplicationWindow {
             height: parent.height
             anchors.centerIn: parent
             source: "/Img/Imagens/background.jpg"
-        }
-
-
-        Audio{
-            id: audioGameOver
-            source: "/Aud/Sons/Bateu.wav";
-            autoLoad: true
-        }
-
-        Audio{
-            id:audioComeu
-            source: "/Aud/Sons/Comeu.wav"
-            autoLoad: true
         }
 
 
@@ -93,13 +79,11 @@ ApplicationWindow {
             criarComida.stop();
             GCobra.destroy();
             gameover.visible = true;
-            audioGameOver.play();
             pontuacao.parar();
         }
 
         onCobraComeu: {
             pontuacao.inclementaPontuacao();
-            audioComeu.play();
         }
 
         onCalPosComida: {

@@ -3,8 +3,8 @@ import QtGraphicalEffects 1.0
 
 Rectangle {
     id: node
-    width: 20
-    height: 20
+    width: 10
+    height: 10
     visible: true
     antialiasing: true
     color: colorNode
@@ -18,8 +18,8 @@ Rectangle {
 
     Rectangle{
        id: containerImagem
-       width: 20
-       height: 20
+       width: 10
+       height: 10
        color: parent.color
        anchors.centerIn: parent
        Image {
@@ -50,8 +50,8 @@ Rectangle {
             when: timerAumentar1.stop();
             PropertyChanges {
                 target: containerImagem
-                width: 35
-                height:35
+                width: 25
+                height:25
             }
         },
         State{
@@ -59,16 +59,16 @@ Rectangle {
             when: timerAumentar2.stop();
             PropertyChanges {
                 target: containerImagem
-                width: 60
-                height:60
+                width: 50
+                height:50
             }
         },
         State {
             name: "NORMAL"
             PropertyChanges{
                 target: containerImagem;
-                width: 20;
-                height:20
+                width: 10;
+                height:10
             }
         }
 

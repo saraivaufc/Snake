@@ -1,12 +1,11 @@
 import QtQuick 2.0
-import QtMultimedia 5.0
 
 
 
 Rectangle {
     id:comida
-    width: 30
-    height: 30
+    width: 20
+    height: 20
     state: estado;
     color: "transparent";
     property var sourceImagem : "/Img/Imagens/rato.png"
@@ -27,36 +26,30 @@ Rectangle {
         angle: 180
     }
 
-    Audio{
-        id: audioMorreu
-        source: "/Aud/Sons/Comeu.wav";
-        autoLoad: true
-    }
-
 
     states: [
         State{
             name:"MORRENDO"
             PropertyChanges {
                 target: comida
-                width: 40
-                height:40
+                width: 30
+                height:30
             }
         },
         State {
             name: "NORMAL"
             PropertyChanges{
                 target: comida;
-                width: 30;
-                height:30
+                width: 20;
+                height:20
             }
         },
         State {
             name: "GRANDE"
             PropertyChanges{
                 target: comida;
-                width: 40;
-                height:40;
+                width: 30;
+                height:30;
             }
         }
 
@@ -188,7 +181,6 @@ Rectangle {
             comida.estado="NORMAL";
             explosao.visible = true;
             imagemComida.visible = false;
-            audioMorreu.play();
         }
     }
 

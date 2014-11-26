@@ -3,7 +3,7 @@ Qt.include("/Js/Funcoes.js");
 var comidas = [];
 var comidasMortas = [];
 
-var tamanhoComida = 30;
+var tamanhoComida = 20;
 
 function criarComida(Campo) {
     var comida = Qt.createComponent("/Qml/Comida.qml");
